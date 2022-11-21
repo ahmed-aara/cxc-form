@@ -1,0 +1,121 @@
+<div class="card_ active_update">
+
+    <div class="head_ px-4 uk-flex uk-flex-right uk-flex-middle">
+
+        <div>
+            <img src="assets/img/test/trash.svg" alt="">
+            <img class="ml-2" src="assets/img/test/copy.svg" alt="">
+        </div>
+
+    </div>
+
+    <div class="px-4 py-3">
+
+        <h3 class="f_Light mb-2">Choice</h3>
+
+        <div class="uk-grid-small uk-child-width-1-1@l mb-3" uk-grid>
+
+            <div>
+                <input class="uk-input py-2" type="text" value="Question">
+                <input *ngIf="option.subtitle" class="uk-input py-2 mt-1" type="text" placeholder="Enter Subtitle">
+
+                <div class="uk-width-2-3">
+                    <ng-select *ngIf="option.drop_down" [items]="[]" class="mt-1" [isOpen]="false" [hideSelected]="true"
+                        [placeholder]="'select Your Answer'">
+                    </ng-select>
+                </div>
+            </div>
+
+            <div *ngIf="optionArr.length !== 0" class="uk-grid-small uk-child-width-1-1@l ml-2" uk-grid>
+
+                <div *ngFor="let item of optionArr">
+                    <div class="uk-grid-small uk-flex uk-flex-middle" uk-grid>
+
+                        <div *ngIf="!option.drop_down" class="uk-width-auto">
+                            <input *ngIf="!option.multiple_answers" disabled class="uk-radio" type="radio"
+                                name="radio2">
+                            <input *ngIf="option.multiple_answers" disabled class="uk-checkbox" type="checkbox">
+                        </div>
+
+                        <div class="uk-width-1-2">
+                            <input class="uk-input py-2" type="text" placeholder="Enter Your Option">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div *ngIf="other">
+                    <div class="uk-grid-small uk-flex uk-flex-middle" uk-grid>
+
+                        <div *ngIf="!option.drop_down" class="uk-width-auto">
+                            <input *ngIf="!option.multiple_answers" disabled class="uk-radio" type="radio"
+                                name="radio2">
+                            <input *ngIf="option.multiple_answers" disabled class="uk-checkbox" type="checkbox">
+                        </div>
+
+                        <div class="uk-width-1-2">
+                            <input disabled class="uk-input py-2" type="text" value="Other">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="uk-flex">
+
+            <button (click)="addOption()" class="p-1 blueBG_ whiteC_ uk-flex uk-flex-middle cursor"><span
+                    uk-icon="plus"></span>
+                &nbsp;
+                Add Option</button>
+
+            <button (click)="other = true" class="p-1 blueBG_ whiteC_ uk-flex uk-flex-middle cursor ml-1">Add "Other"
+                option</button>
+
+        </div>
+
+    </div>
+
+    <div class="footer_ px-4 uk-flex uk-flex-right uk-flex-middle">
+
+        <div class="uk-flex">
+
+            <div *ngIf="!option.drop_down" class="uk-flex uk-flex-middle mr-3">
+                <ui-switch switchColor="#fff" color="#3498DB" size="small" [(ngModel)]="option.multiple_answers">
+                </ui-switch>
+                <p class="ml-2">Multiple Answers</p>
+            </div>
+
+            <div class="uk-flex uk-flex-middle mr-3">
+                <ui-switch switchColor="#fff" color="#3498DB" size="small" [(ngModel)]="option.required">
+                </ui-switch>
+                <p class="ml-2">Required</p>
+            </div>
+
+            <img src="assets/img/test/menu.svg" alt="">
+            <div class="p-1" uk-dropdown="pos: top-right; mode: click">
+                <ul class="uk-nav uk-dropdown-nav">
+                    <li class="p-1">
+                        <a (click)="option.subtitle = true">
+                            <span *ngIf="option.subtitle" class="mr-1" uk-icon="check"></span>
+                            Subtitle
+                        </a>
+
+                    </li>
+
+                    <li class="p-1">
+                        <a (click)="option.drop_down = true">
+                            <span *ngIf="option.drop_down" class="mr-1" uk-icon="check"></span>
+                            Drop Down
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</div>

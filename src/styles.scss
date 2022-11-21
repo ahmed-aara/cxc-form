@@ -1,1 +1,100 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: "Poppins-ExtraLight";
+    src: url(assets/font/Poppins/Poppins-ExtraLight.ttf);
+}
+
+@font-face {
+    font-family: "Poppins-Light";
+    src: url(assets/font/Poppins/Poppins-Light.ttf);
+}
+
+@font-face {
+    font-family: "Poppins-Regular";
+    src: url(assets/font/Poppins/Poppins-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Poppins-Medium";
+    src: url(assets/font/Poppins/Poppins-Medium.ttf);
+}
+
+@font-face {
+    font-family: "Poppins-SemiBold";
+    src: url(assets/font/Poppins/Poppins-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: "Poppins-Bold";
+    src: url(assets/font/Poppins/Poppins-Bold.ttf);
+}
+
+@font-face {
+    font-family: "Poppins-ExtraBold";
+    src: url(assets/font/Poppins/Poppins-ExtraBold.ttf);
+}
+
+body {
+    font-family: "Poppins-Regular" !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+    font-family: "Poppins-Regular" !important;
+    margin: 0 !important;
+    color: #383838 !important;
+}
+
+.switch {
+    top: -2px;
+}
+
+.switch.switch-small {
+    min-width: 45px;
+}
+
+.ng-select.ng-select-single .ng-select-container {
+    height: 40px;
+    padding: 0px 10px;
+    border-radius: 0px;
+}
+
+.ng-select .ng-select-container {
+    color: #383838;
+    background-color: #e0e0e0;
+    border-radius: 0px;
+    border: 1px solid #e0e0e0;
+    min-height: 40px;
+    align-items: center;
+}
+
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-placeholder {
+    font-size: 20px;
+    top: 7px;
+    padding-bottom: 0px;
+    padding-left: 4px;
+}
+
+.ng-select.ng-select-opened > .ng-select-container {
+    background: transparent;
+    border-color: #4261e4;
+}
+
+.ng-select .ng-select-container .ng-value-container .ng-input > input {
+    font-size: 20px;
+    color: #383838;
+}
+
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value .ng-value-label {
+    color: black;
+}
+
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value .ng-value-icon {
+    color: black;
+}

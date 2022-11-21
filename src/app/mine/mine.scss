@@ -1,0 +1,278 @@
+.full_w {
+    width: 100% !important;
+}
+
+.full_h {
+    height: 100% !important;
+}
+
+.white_space {
+    white-space: pre-wrap !important;
+}
+
+.a_decoration {
+    text-decoration: none !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.cursor {
+    cursor: pointer !important;
+}
+
+.capitalize_ {
+    text-transform: capitalize;
+}
+
+.outLine {
+    outline: none !important;
+}
+
+.line_through {
+    text-decoration: line-through;
+}
+
+.lowercase_ {
+    text-transform: lowercase !important;
+}
+
+.form-control:focus,
+.ng-select-container:focus {
+    border-color: #00bfce !important;
+}
+
+.full_right_ {
+    position: relative;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    z-index: 500;
+}
+
+.full_left_ {
+    position: relative;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    z-index: 500;
+}
+
+.full_center_ {
+    position: relative;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 500;
+}
+
+.black-text_input {
+    color: #333333 !important;
+    border: 1px solid #ccc;
+}
+
+.black-text_input::placeholder {
+    color: #999999 !important;
+}
+
+/******************************checkBox******************************/
+
+.checkbox_ .form-group {
+    display: initial !important;
+    margin-bottom: 15px;
+}
+
+.checkbox_ .form-group input {
+    padding: 0;
+    height: initial;
+    width: initial;
+    margin-bottom: 0;
+    display: none;
+    cursor: pointer;
+}
+
+.checkbox_ .form-group label {
+    position: relative;
+    cursor: pointer;
+}
+
+.checkbox_ .form-group label:before {
+    content: "";
+    background-color: transparent;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.checkbox_ .form-group input:checked + label:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 2px;
+    left: 9px;
+    width: 6px;
+    height: 14px;
+    border: solid #0a0101;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/******************radioButton*****/
+
+.radio-button {
+    padding: 1px;
+}
+
+.radio-button .radio-options {
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: text-start;
+    flex-direction: column;
+}
+
+.radio-button .radio-options .light-name {
+    color: lightgrey;
+    font-size: 14px;
+}
+
+.radio-button .box {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.radio-button input[type="radio"] {
+    display: none;
+}
+
+.radio-button input[type="radio"] + label {
+    position: relative;
+    display: inline-block;
+    padding-left: 24px;
+    cursor: pointer;
+    line-height: 16px;
+    transition: all 0.2s ease-in-out;
+    margin-bottom: 10px;
+}
+
+.radio-button input[type="radio"] + label:before,
+.radio-button input[type="radio"] + label:after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    color: #f5f5f5;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.radio-button input[type="radio"] + label:before {
+    box-shadow: inset 0 0 0 1px #666565, inset 0 0 0 16px #fff, inset 0 0 0 16px #2ecc71;
+}
+
+.radio-button input[type="radio"] + label:hover {
+    color: #ff9100;
+}
+
+.radio-button input[type="radio"] + label:hover:before {
+    transition: all 0.3s ease;
+    box-shadow: 0 0 0 1px #ff9100, inset 0 0 0 1px #ff9100, inset 0 0 0 16px #fff, inset 0 0 0 16px #ff9100;
+}
+
+.radio-button input[type="radio"]:checked + label {
+    color: #ff9100;
+}
+
+.radio-button input[type="radio"]:checked + label:hover {
+    cursor: default;
+}
+
+.radio-button input[type="radio"]:checked + label:before {
+    animation-duration: 0.5s;
+    animation-name: select-radio;
+    animation-iteration-count: 1;
+    animation-direction: Normal;
+    box-shadow: inset 0 0 0 1px #ff9100, inset 0 0 0 0px #fff, inset 0 0 0 16px #ff9100;
+}
+
+@keyframes select-radio {
+    0% {
+        box-shadow: inset 0 0 0 1px #ff9100, inset 0 0 0 7px #fff, inset 0 0 0 16px #ff9100;
+    }
+
+    100% {
+        box-shadow: inset 0 0 0 1px #ff9100, inset 0 0 0 0px #fff, inset 0 0 0 16px #ff9100;
+    }
+}
+
+/*******************scrollbar****************/
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 7px;
+    background-color: #282828;
+}
+
+::-webkit-scrollbar-button {
+    width: 1px;
+    height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 50px !important;
+    background: #4261e4;
+    border: 0px none #4261e4;
+    border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4261e4;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: #4261e4;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    border: 0px none #4261e4;
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-track:hover {
+    background: transparent;
+}
+
+::-webkit-scrollbar-track:active {
+    background: transparent;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}

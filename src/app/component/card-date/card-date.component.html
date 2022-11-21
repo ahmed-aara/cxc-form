@@ -1,0 +1,69 @@
+<div class="card_ active_update">
+
+    <div class="head_ px-4 uk-flex uk-flex-right uk-flex-middle">
+
+        <div>
+            <img src="assets/img/test/trash.svg" alt="">
+            <img class="ml-2" src="assets/img/test/copy.svg" alt="">
+        </div>
+
+    </div>
+
+    <div class="px-4 py-3">
+
+        <h3 class="f_Light mb-2 title_">Date</h3>
+
+        <div class="uk-grid-small uk-child-width-1-1@l" uk-grid>
+
+            <div>
+                <h4 class="f_Light question_">1. Question</h4>
+                <input class="uk-input py-2 input_question" type="text" value="Question">
+                <input *ngIf="option.subtitle" class="uk-input py-2 mt-1" type="text" placeholder="Enter Subtitle">
+            </div>
+
+            <div>
+
+                <div class="uk-inline full_w">
+                    <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: calendar"></span>
+                    <input disabled class="uk-input border_ py-2" type="date" placeholder="Enter Your Answer">
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer_ px-4 uk-flex uk-flex-right uk-flex-middle">
+
+        <div class="uk-flex">
+
+            <div class="uk-flex uk-flex-middle mr-3">
+                <ui-switch switchColor="#fff" color="#3498DB" size="small" [(ngModel)]="option.long_text">
+                </ui-switch>
+                <p class="ml-2">Long Answer</p>
+            </div>
+
+            <div class="uk-flex uk-flex-middle mr-3">
+                <ui-switch switchColor="#fff" color="#3498DB" size="small" [(ngModel)]="option.required">
+                </ui-switch>
+                <p class="ml-2">Required</p>
+            </div>
+
+            <img src="assets/img/test/menu.svg" alt="">
+            <div class="p-1" uk-dropdown="pos: top-right; mode: click">
+                <ul class="uk-nav uk-dropdown-nav">
+                    <li class="p-1">
+                        <a (click)="option.subtitle = true">
+                            <span *ngIf="option.subtitle" class="mr-1" uk-icon="check"></span>
+                            Subtitle
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</div>

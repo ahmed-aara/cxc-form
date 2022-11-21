@@ -1,60 +1,41 @@
-
-.sec_form .btn_add {
-    width: 12%;
-    height: 40px;
-    background-color: #3498db;
-    border: none;
-    transition: 0.5s;
-}
-
-.sec_form .btn_add p {
-    font-size: 17px;
-}
-
-.sec_form .nav_ {
-    border-bottom: 1px solid #494949;
-}
-/**
-    Card
-*/
-
-.sec_form .card_.active_update {
+.card_.active_update {
     background-color: #f2f2f2;
     transition: 0.5s;
 }
 
-.sec_form .card_:hover {
+.card_:hover {
     background-color: #f2f2f2;
 }
 
-.sec_form .card_ .head_,
-.sec_form .card_ .footer_,
-.sec_form .card_ .input_question,
-.sec_form .card_ .title_ {
+.card_ .head_,
+.card_ .footer_,
+.card_ .input_question,
+.card_ .title_ {
     display: none;
 }
 
-.sec_form .card_.active_update .head_ {
+.card_.active_update .head_ {
     display: flex;
     height: 75px;
     border-bottom: 1px solid #d9d9d9;
 }
 
-.sec_form .card_.active_update .footer_ {
+.card_.active_update .footer_ {
     display: flex;
     height: 75px;
     border-top: 1px solid #d9d9d9;
 }
 
-.sec_form .card_.active_update .input_question,
-.sec_form .card_.active_update .title_ {
+.card_.active_update .input_question,
+.card_.active_update .title_ {
     display: block;
 }
 
-.sec_form .card_.active_update .question_ {
+.card_.active_update .question_ {
     display: none;
 }
 
+///////
 .uk-input {
     background-color: #e0e0e0 !important;
 }
