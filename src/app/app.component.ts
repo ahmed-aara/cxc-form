@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, Renderer2, RendererStyleFlags2, ViewChild } from '@angular/core';
-declare const makeid: any
+declare const makeid: any, UIkit: any
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,14 +14,14 @@ declare const makeid: any
 })
 export class AppComponent implements OnInit {
 
-  @ViewChild('paymentIframe') iframe: ElementRef | undefined
+  @ViewChild('scrollMe') private myScrollContainer: ElementRef | undefined;
 
   //Array
   cardArr: any = [
-    { type: 'rating', id: makeid(11) },
-    { type: 'text', id: makeid(11) },
-    { type: 'choice', id: makeid(11) },
-    { type: 'date', id: makeid(11) },
+    // { type: 'text', id: makeid(11) },
+    // { type: 'rating', id: makeid(11) },
+    // { type: 'choice', id: makeid(11) },
+    // { type: 'date', id: makeid(11) },
   ]
 
   //Variable
@@ -31,18 +31,24 @@ export class AppComponent implements OnInit {
 
   @ViewChild('sec_form', { static: false }) sec_form: any;
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   receivedAction(data: any) {
     if (data.type === 'delete') {
       var index = this.cardArr.map((o: any) => { return o.id; }).indexOf(data.value);
       this.cardArr.splice(index, 1)
+    } else if (data.type === 'change-data') {
+      console.log(data.value)
     }
   }
 
   add(type: any) {
     console.log(this.cardArr)
     this.cardArr.push({ type: type, id: makeid(11) })
+    setTimeout(() => {
+      UIkit.scroll().scrollTo('.end_');
+    }, 100);
   }
 
   btnOption() {
@@ -91,7 +97,5 @@ export class AppComponent implements OnInit {
   myDOM(_class: any, styleData: any) {
     styleData.map((value: any) => { return this.renderer.setStyle(this.sec_form.nativeElement.querySelector(_class), value.key, value.value, RendererStyleFlags2.Important); })
   }
-
-
 
 }

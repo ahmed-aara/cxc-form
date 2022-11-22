@@ -15,14 +15,16 @@
 
     <div class="px-4 py-3">
 
-        <h3 class="f_Light mb-2 title_">Text</h3>
+        <h3 class="f_Light mb-2 title_">Text <span *ngIf="option.required" class="redC_">*</span></h3>
 
         <div class="uk-grid-small uk-child-width-1-1@l" uk-grid>
 
             <div>
                 <h4 class="f_Light question_">1. Question</h4>
-                <input class="uk-input py-2 input_question" type="text" value="Question">
-                <input *ngIf="option.subtitle" class="uk-input py-2 mt-1" type="text" placeholder="Enter Subtitle">
+                <input class="uk-input py-2 input_question" type="text" (input)="changeValue()"
+                    [(ngModel)]="option.question_text">
+                <input *ngIf="option.subtitle" class="uk-input py-2 mt-1" type="text" placeholder="Enter Subtitle"
+                    [(ngModel)]="option.subtitle_text">
             </div>
 
             <div>

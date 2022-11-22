@@ -34,113 +34,118 @@
 
     </div>
 
-    <div class="uk-flex uk-flex-center body">
+    <div #contentRef class="body full_w">
 
-        <div class="uk-width-2-3 whiteBG_ px-3 py-4 whiteBG_ box_">
+        <div class="uk-container whiteBG_ full_w">
 
-            <div class="uk-grid-small uk-child-width-1-1@l" uk-sortable="handle: .uk-sortable-handle" uk-grid>
 
-                <div *ngFor="let item of cardArr">
-    
-                    <app-card-text (clickEvent)="receivedAction($event)" *ngIf="item.type === 'text'" [id]="item.id">
-                    </app-card-text>
-                    <app-card-choice (clickEvent)="receivedAction($event)" *ngIf="item.type === 'choice'" [id]="item.id">
-                    </app-card-choice>
-                    <app-card-date (clickEvent)="receivedAction($event)" *ngIf="item.type === 'date'" [id]="item.id">
-                    </app-card-date>
-                    <app-card-rating (clickEvent)="receivedAction($event)" *ngIf="item.type === 'rating'" [id]="item.id">
-                    </app-card-rating>
-    
-                </div>
-    
-            </div>
-    
-            <div (click)="btnOption()" class="btn_add greenBG_ py-2 px-1 cursor mt-2">
-    
-                <div class="uk-flex uk-flex-center uk-flex-middle body_ full_h">
-                    <span class="whiteC_" uk-icon="icon: plus"></span>
-                    <p class="m-0 whiteC_ pl-1">Add New</p>
-                </div>
-    
-                <div hidden class="buttons_ full_h">
-    
-                    <div class="uk-grid-small full_h" uk-grid>
-    
-                        <div class="uk-width-auto">
-                            <button class="full_w full_h whiteBG_ px-1">
-                                <span class="blackC_" uk-icon="icon: plus"></span>
-                            </button>
-                        </div>
-    
-                        <div class="uk-width-expand">
-    
-                            <div class="uk-grid-small uk-child-width-1-4@l full_h" uk-grid>
-    
-                                <div>
-                                    <button (click)="add('choice')" class="full_w full_h whiteBG_ cursor">
-    
-                                        <div class="uk-flex uk-flex-center uk-flex-middle full_w full_h">
-                                            <img width="20%" src="../../../assets/img/test/choice.svg" alt="">
-                                            <p class="ml-1">Choice</p>
-                                        </div>
-    
-                                    </button>
-                                </div>
-    
-                                <div>
-                                    <button (click)="add('text')" class="full_w full_h whiteBG_ cursor">
-    
-                                        <div class="uk-flex uk-flex-center uk-flex-middle full_w full_h">
-                                            <img width="20%" src="../../../assets/img/test/text.svg" alt="">
-                                            <p class="ml-1">Text</p>
-                                        </div>
-    
-                                    </button>
-                                </div>
-    
-                                <div>
-                                    <button (click)="add('rating')" class="full_w full_h whiteBG_ cursor">
-    
-                                        <div class="uk-flex uk-flex-center uk-flex-middle full_w full_h">
-                                            <img width="20%" src="../../../assets/img/test/rating.svg" alt="">
-                                            <p class="ml-1">Rating</p>
-                                        </div>
-    
-                                    </button>
-                                </div>
-    
-                                <div>
-                                    <button (click)="add('date')" class="full_w full_h whiteBG_ cursor">
-    
-                                        <div class="uk-flex uk-flex-center uk-flex-middle full_w full_h">
-                                            <img width="20%" src="../../../assets/img/test/date.svg" alt="">
-                                            <p class="ml-1">Date</p>
-                                        </div>
-    
-                                    </button>
-                                </div>
-    
-                            </div>
-    
-                        </div>
-    
+            <div class="whiteBG_ px-3 py-3 whiteBG_ box_">
+
+                <div class="uk-grid-small uk-child-width-1-1@l" uk-sortable="handle: .uk-sortable-handle" uk-grid>
+
+                    <div *ngFor="let item of cardArr">
+
+                        <app-card-text (clickEvent)="receivedAction($event)" *ngIf="item.type === 'text'"
+                            [id]="item.id">
+                        </app-card-text>
+                        <app-card-choice (clickEvent)="receivedAction($event)" *ngIf="item.type === 'choice'"
+                            [id]="item.id">
+                        </app-card-choice>
+                        <app-card-date (clickEvent)="receivedAction($event)" *ngIf="item.type === 'date'"
+                            [id]="item.id">
+                        </app-card-date>
+                        <app-card-rating (clickEvent)="receivedAction($event)" *ngIf="item.type === 'rating'"
+                            [id]="item.id">
+                        </app-card-rating>
+
                     </div>
-    
-                </div>
-    
-            </div>
 
+                </div>
+
+                <div (click)="btnOption()" class="btn_add greenBG_ py-2 px-1 cursor mt-2">
+
+                    <div class="uk-flex uk-flex-center uk-flex-middle body_ full_h">
+                        <span class="whiteC_" uk-icon="icon: plus"></span>
+                        <p class="m-0 whiteC_ pl-1">Add New</p>
+                    </div>
+
+                    <div hidden class="buttons_ full_h">
+
+                        <div class="uk-grid-small full_h" uk-grid>
+
+                            <div class="uk-width-auto">
+                                <button class="full_w full_h whiteBG_ px-1">
+                                    <span class="blackC_" uk-icon="icon: plus"></span>
+                                </button>
+                            </div>
+
+                            <div class="uk-width-expand">
+
+                                <div class="uk-grid-small uk-child-width-1-4@l full_h" uk-grid>
+
+                                    <div>
+                                        <button (click)="add('choice')" class="full_w full_h whiteBG_ cursor">
+
+                                            <div class="uk-flex uk-flex-center uk-flex-middle full_w full_h">
+                                                <img width="20%" src="../../../assets/img/test/choice.svg" alt="">
+                                                <p class="ml-1">Choice</p>
+                                            </div>
+
+                                        </button>
+                                    </div>
+
+                                    <div>
+                                        <button (click)="add('text')" class="full_w full_h whiteBG_ cursor">
+
+                                            <div class="uk-flex uk-flex-center uk-flex-middle full_w full_h">
+                                                <img width="20%" src="../../../assets/img/test/text.svg" alt="">
+                                                <p class="ml-1">Text</p>
+                                            </div>
+
+                                        </button>
+                                    </div>
+
+                                    <div>
+                                        <button (click)="add('rating')" class="full_w full_h whiteBG_ cursor">
+
+                                            <div class="uk-flex uk-flex-center uk-flex-middle full_w full_h">
+                                                <img width="20%" src="../../../assets/img/test/rating.svg" alt="">
+                                                <p class="ml-1">Rating</p>
+                                            </div>
+
+                                        </button>
+                                    </div>
+
+                                    <div>
+                                        <button (click)="add('date')" class="full_w full_h whiteBG_ cursor">
+
+                                            <div class="uk-flex uk-flex-center uk-flex-middle full_w full_h">
+                                                <img width="20%" src="../../../assets/img/test/date.svg" alt="">
+                                                <p class="ml-1">Date</p>
+                                            </div>
+
+                                        </button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="end_ mt-5"></div>
+
+            </div>
         </div>
 
     </div>
 
+
+
 </section>
-
-
-<!-- 
-
-<app-card-text></app-card-text>
-<button (click)="saveValues()">asfdsdf</button> -->
-
 
 <router-outlet></router-outlet>

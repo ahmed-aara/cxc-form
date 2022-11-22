@@ -13,6 +13,7 @@ import { CardTextComponent } from './component/card-text/card-text.component';
 import { CardChoiceComponent } from './component/card-choice/card-choice.component';
 import { CardDateComponent } from './component/card-date/card-date.component';
 import { CardRatingComponent } from './component/card-rating/card-rating.component';
+import { TestComponent } from './page/test/test.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CardRatingComponent } from './component/card-rating/card-rating.compone
     CardTextComponent,
     CardChoiceComponent,
     CardDateComponent,
-    CardRatingComponent
+    CardRatingComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

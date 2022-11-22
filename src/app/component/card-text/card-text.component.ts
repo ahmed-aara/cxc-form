@@ -19,7 +19,9 @@ export class CardTextComponent implements OnInit {
   option: any = {
     long_text: false,
     subtitle: false,
-    required: false
+    required: false,
+    question_text: 'Question',
+    subtitle_text: 'Question',
   }
 
   constructor() { }
@@ -28,12 +30,15 @@ export class CardTextComponent implements OnInit {
   }
 
   delete(id: any) {
-    this.clickEvent.emit({type: 'delete', value: id});
+    this.clickEvent.emit({ type: 'delete', value: id });
   }
 
   copy(data: any) {
-    this.clickEvent.emit({type: 'copy', value: 'id'});
+    this.clickEvent.emit({ type: 'copy', value: 'id' });
   }
 
+  changeValue() {
+    this.clickEvent.emit({ type: 'change-data', value: this.option });
+  }
 
 }
