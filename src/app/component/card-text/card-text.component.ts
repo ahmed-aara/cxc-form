@@ -1,11 +1,9 @@
-import { Component, OnInit, Output, EventEmitter, Renderer2 } from '@angular/core';
-import { DataPassService } from 'src/app/service/data-pass.service';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card-text',
   templateUrl: './card-text.component.html',
   styleUrls: ['./card-text.component.scss',
-
     '../../mine/margin_padding.scss',
     '../../mine/color.scss',
     '../../mine/general.scss',
@@ -14,28 +12,28 @@ import { DataPassService } from 'src/app/service/data-pass.service';
 })
 export class CardTextComponent implements OnInit {
 
+  @Output() clickEvent = new EventEmitter();
+  @Input() id: string | undefined;
+
   //Variable
-  option:any = {
-    long_text:false,
+  option: any = {
+    long_text: false,
     subtitle: false,
     required: false
   }
 
-  child1Value: any = { firstName: "", lastName: "" }
-  constructor(private dataPass: DataPassService, private renderer: Renderer2) { }
+  constructor() { }
 
   ngOnInit() {
-
   }
 
-  changeValues() {
-    this.dataPass.child1DataChanges(this.child1Value);
+  delete(id: any) {
+    this.clickEvent.emit({type: 'delete', value: id});
   }
 
-  active(event: any) {
-    // console.log(event.target)
-    // console.log(typeof event.path[1])
-    // this.renderer.addClass(event.path[1], "active_update")
+  copy(data: any) {
+    this.clickEvent.emit({type: 'copy', value: 'id'});
   }
+
 
 }

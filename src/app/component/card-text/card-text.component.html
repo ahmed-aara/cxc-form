@@ -1,10 +1,14 @@
-<div class="card_ active_update" (click)="active($event)">
+<div class="card_">
+
+    <div class="uk-flex uk-flex-center pt-3">
+        <span class="uk-sortable-handle uk-margin-small-right uk-text-center" uk-icon="icon: table"></span>
+    </div>
 
     <div class="head_ px-4 uk-flex uk-flex-right uk-flex-middle">
 
         <div>
-            <img src="assets/img/test/trash.svg" alt="">
-            <img class="ml-2" src="assets/img/test/copy.svg" alt="">
+            <img (click)="delete(id)" src="assets/img/test/trash.svg" alt="">
+            <img (click)="copy('copy')" class="ml-2" src="assets/img/test/copy.svg" alt="">
         </div>
 
     </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card-date',
@@ -12,6 +12,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardDateComponent implements OnInit {
 
+  @Output() clickEvent = new EventEmitter();
+  @Input() id: string | undefined;
 
   option: any = {
     multiple_answers: false,
@@ -24,5 +26,14 @@ export class CardDateComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  delete(id: any) {
+    this.clickEvent.emit({ type: 'delete', value: id });
+  }
+
+  copy(data: any) {
+    this.clickEvent.emit({ type: 'copy', value: 'id' });
+  }
+
 
 }

@@ -3,7 +3,7 @@
 }
 
 .uk-container {
-    max-width: 1070px !important
+    max-width: 1070px !important;
 }
 
 .border_radius {
@@ -12,8 +12,7 @@
 
 .uk-input,
 .uk-textarea {
-    padding: 30px 15px;
-    background: #F7F7F7;
+    background: #f7f7f7;
     color: #383838 !important;
     border: 1px solid transparent;
 }
@@ -24,10 +23,9 @@
 
 .uk-input:focus,
 .uk-textarea:focus {
-    background-color: #F7F7F7;
+    background-color: #f7f7f7;
     border: 1px solid #1e87f0;
 }
-
 
 /*
 * Button
@@ -55,9 +53,6 @@ button {
     height: 5px;
 }
 
-
-
-
 .uk-notification-message {
     color: white;
     background: #333333;
@@ -67,7 +62,6 @@ button {
     position: sticky;
     top: 0;
 }
-
 
 /*
 *
@@ -82,9 +76,9 @@ button {
 
 .ng-select .ng-select-container {
     color: #383838;
-    background-color: #F7F7F7;
+    background-color: #f7f7f7;
     border-radius: 0px;
-    border: 1px solid #F7F7F7;
+    border: 1px solid #f7f7f7;
     min-height: 40px;
     align-items: center;
 }
@@ -96,12 +90,12 @@ button {
     padding-left: 4px;
 }
 
-.ng-select.ng-select-opened>.ng-select-container {
+.ng-select.ng-select-opened > .ng-select-container {
     background: transparent;
-    border-color: #4261E4;
+    border-color: #4261e4;
 }
 
-.ng-select .ng-select-container .ng-value-container .ng-input>input {
+.ng-select .ng-select-container .ng-value-container .ng-input > input {
     font-size: 20px;
     color: #383838;
 }
@@ -119,41 +113,40 @@ button {
     position: relative;
     width: 80px;
     height: 80px;
-  }
-  .lds-facebook div {
+}
+.lds-facebook div {
     display: inline-block;
     position: absolute;
     left: 8px;
     width: 16px;
-    background: #4261E4;
+    background: #4261e4;
     animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
-  }
-  .lds-facebook div:nth-child(1) {
+}
+.lds-facebook div:nth-child(1) {
     left: 8px;
     animation-delay: -0.24s;
-  }
-  .lds-facebook div:nth-child(2) {
+}
+.lds-facebook div:nth-child(2) {
     left: 32px;
     animation-delay: -0.12s;
-  }
-  .lds-facebook div:nth-child(3) {
+}
+.lds-facebook div:nth-child(3) {
     left: 56px;
     animation-delay: 0;
-  }
-  @keyframes lds-facebook {
+}
+@keyframes lds-facebook {
     0% {
-      top: 8px;
-      height: 64px;
+        top: 8px;
+        height: 64px;
     }
-    50%, 100% {
-      top: 24px;
-      height: 32px;
+    50%,
+    100% {
+        top: 24px;
+        height: 32px;
     }
-  }
-
+}
 
 /*responsive*********************************************/
-
 
 /*
 [Table of Contents]
@@ -172,38 +165,56 @@ button {
 13. 400px
 */
 
-@media only screen and (max-width: 1920px) {}
+@media only screen and (max-width: 1920px) {
+}
 
-@media only screen and (max-width: 1600px) {}
+@media only screen and (max-width: 1600px) {
+}
 
-@media only screen and (max-width: 1440px) {}
+@media only screen and (max-width: 1440px) {
+}
 
-@media only screen and (max-width: 1380px) {}
+@media only screen and (max-width: 1380px) {
+}
 
-@media only screen and (max-width: 1280px) {}
+@media only screen and (max-width: 1280px) {
+}
 
-@media only screen and (max-width: 1199px) {}
+@media only screen and (max-width: 1199px) {
+}
 
-@media only screen and (max-width: 1100px) {}
+@media only screen and (max-width: 1100px) {
+}
 
-@media only screen and (max-width: 1024px) {}
+@media only screen and (max-width: 1024px) {
+}
 
-@media only screen and (max-width: 991px) {}
+@media only screen and (max-width: 991px) {
+}
 
-@media only screen and (max-width: 959px) {}
+@media only screen and (max-width: 959px) {
+}
 
-@media only screen and (max-width: 880px) {}
+@media only screen and (max-width: 880px) {
+}
 
-@media only screen and (max-width: 768px) {}
+@media only screen and (max-width: 768px) {
+}
 
-@media only screen and (max-width: 767px) {}
+@media only screen and (max-width: 767px) {
+}
 
-@media only screen and (max-width: 575px) {}
+@media only screen and (max-width: 575px) {
+}
 
-@media only screen and (max-width: 539px) {}
+@media only screen and (max-width: 539px) {
+}
 
-@media only screen and (max-width: 480px) {}
+@media only screen and (max-width: 480px) {
+}
 
-@media only screen and (max-width: 479px) {}
+@media only screen and (max-width: 479px) {
+}
 
-@media only screen and (max-width: 400px) {}
+@media only screen and (max-width: 400px) {
+}

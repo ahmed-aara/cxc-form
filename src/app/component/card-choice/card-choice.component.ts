@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card-choice',
@@ -11,6 +11,9 @@ import { Component, OnInit } from '@angular/core';
     '../../mine/font.scss']
 })
 export class CardChoiceComponent implements OnInit {
+
+  @Output() clickEvent = new EventEmitter();
+  @Input() id: string | undefined;
 
   option: any = {
     multiple_answers: false,
@@ -36,5 +39,14 @@ export class CardChoiceComponent implements OnInit {
   addOption() {
     this.optionArr.push({ name: '' })
   }
+
+  delete(id: any) {
+    this.clickEvent.emit({ type: 'delete', value: id });
+  }
+
+  copy(data: any) {
+    this.clickEvent.emit({ type: 'copy', value: 'id' });
+  }
+
 
 }

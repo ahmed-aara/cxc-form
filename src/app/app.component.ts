@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnInit, Renderer2, RendererStyleFlags2, ViewChild } from '@angular/core';
-import { DataPassService } from './service/data-pass.service';
-
+declare const makeid: any
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,41 +16,34 @@ export class AppComponent implements OnInit {
 
   @ViewChild('paymentIframe') iframe: ElementRef | undefined
 
-
-
-
+  //Array
+  cardArr: any = [
+    { type: 'rating', id: makeid(11) },
+    { type: 'text', id: makeid(11) },
+    { type: 'choice', id: makeid(11) },
+    { type: 'date', id: makeid(11) },
+  ]
 
   //Variable
   add_btn_option: any = false
-  enable: any = true
-  other: any = false
 
-  /*******************test */
-  child1Data: any;
-  child2Data: any;
-  constructor(private renderer: Renderer2, private dataPass: DataPassService) {
-    this.dataPass.child2Subject.subscribe((data: any) => {
-      this.child2Data = data;
-    })
-    this.dataPass.child1Subject.subscribe((data: any) => {
-      this.child1Data = data;
-    })
-  }
-
-  saveValues() {
-    console.log(this.child1Data);
-    console.log(this.child2Data);
-  }
-
-  /*******************test */
+  constructor(private renderer: Renderer2) { }
 
   @ViewChild('sec_form', { static: false }) sec_form: any;
 
-  ngOnInit(): void {
-    console.log(this.child1Data);
+  ngOnInit(): void { }
+
+  receivedAction(data: any) {
+    if (data.type === 'delete') {
+      var index = this.cardArr.map((o: any) => { return o.id; }).indexOf(data.value);
+      this.cardArr.splice(index, 1)
+    }
   }
 
-
+  add(type: any) {
+    console.log(this.cardArr)
+    this.cardArr.push({ type: type, id: makeid(11) })
+  }
 
   btnOption() {
     this.add_btn_option = !this.add_btn_option
@@ -96,18 +88,10 @@ export class AppComponent implements OnInit {
     }
   }
 
-  active(event: any) {
-    console.log(event.target)
-    console.log(typeof event.path[1])
-    this.renderer.addClass(event.path[1], "active_update")
-  }
-
-  close() {
-    console.log('ajdshgasd')
-  }
-
   myDOM(_class: any, styleData: any) {
     styleData.map((value: any) => { return this.renderer.setStyle(this.sec_form.nativeElement.querySelector(_class), value.key, value.value, RendererStyleFlags2.Important); })
   }
+
+
 
 }

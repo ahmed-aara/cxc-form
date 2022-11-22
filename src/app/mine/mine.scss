@@ -236,7 +236,7 @@
 ::-webkit-scrollbar {
     width: 5px;
     height: 7px;
-    background-color: #282828;
+    background-color: #ffffff;
 }
 
 ::-webkit-scrollbar-button {
@@ -246,22 +246,22 @@
 
 ::-webkit-scrollbar-thumb {
     border-radius: 50px !important;
-    background: #4261e4;
-    border: 0px none #4261e4;
+    background: #03787C;
+    border: 0px none #03787C;
     border-radius: 0px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #4261e4;
+    background: #03787C;
 }
 
 ::-webkit-scrollbar-thumb:active {
-    background: #4261e4;
+    background: #03787C;
 }
 
 ::-webkit-scrollbar-track {
     background: transparent;
-    border: 0px none #4261e4;
+    border: 0px none #03787C;
     border-radius: 50px;
 }
 

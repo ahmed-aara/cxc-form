@@ -1,10 +1,14 @@
-<div class="card_ active_update">
+<div class="card_">
+
+    <div class="uk-flex uk-flex-center pt-3">
+        <span class="uk-sortable-handle uk-margin-small-right uk-text-center" uk-icon="icon: table"></span>
+    </div>
 
     <div class="head_ px-4 uk-flex uk-flex-right uk-flex-middle">
 
         <div>
-            <img src="assets/img/test/trash.svg" alt="">
-            <img class="ml-2" src="assets/img/test/copy.svg" alt="">
+            <img (click)="delete(id)" src="assets/img/test/trash.svg" alt="">
+            <img (click)="copy('copy')" class="ml-2" src="assets/img/test/copy.svg" alt="">
         </div>
 
     </div>
@@ -66,12 +70,12 @@
 
         <div class="uk-flex">
 
-            <button (click)="addOption()" class="p-1 blueBG_ whiteC_ uk-flex uk-flex-middle cursor"><span
+            <button (click)="addOption()" class="p-1 greenBG_ whiteC_ uk-flex uk-flex-middle cursor"><span
                     uk-icon="plus"></span>
                 &nbsp;
                 Add Option</button>
 
-            <button (click)="other = true" class="p-1 blueBG_ whiteC_ uk-flex uk-flex-middle cursor ml-1">Add "Other"
+            <button (click)="other = true" class="p-1 greenBG_ whiteC_ uk-flex uk-flex-middle cursor ml-1">Add "Other"
                 option</button>
 
         </div>

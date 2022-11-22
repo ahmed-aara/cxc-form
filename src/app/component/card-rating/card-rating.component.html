@@ -1,10 +1,14 @@
-<div class="card_ active_update">
+<div class="card_">
+
+    <div class="uk-flex uk-flex-center pt-3">
+        <span class="uk-sortable-handle uk-margin-small-right uk-text-center" uk-icon="icon: table"></span>
+    </div>
 
     <div class="head_ px-4 uk-flex uk-flex-right uk-flex-middle">
 
         <div>
-            <img src="assets/img/test/trash.svg" alt="">
-            <img class="ml-2" src="assets/img/test/copy.svg" alt="">
+            <img (click)="delete(id)" src="assets/img/test/trash.svg" alt="">
+            <img (click)="copy('copy')" class="ml-2" src="assets/img/test/copy.svg" alt="">
         </div>
 
     </div>
@@ -22,18 +26,30 @@
             </div>
 
             <div>
-                <input *ngIf="!option.long_text" disabled class="uk-input border_ py-2" type="text"
-                    placeholder="Enter Your Answer">
+                
+                <div class="uk-flex">
+                    <div *ngFor="let item of rateArr" class="circle mr-1"></div>
+                </div>
 
-                <textarea *ngIf="option.long_text" disabled class="uk-textarea border_ py-2" name=""
-                    placeholder="Enter Your Answer" rows="3"></textarea>
             </div>
 
-            <div>
+            <div class="uk-width-1-3@l">
 
-                <ng-select *ngIf="option.drop_down" [items]="[2,3,4,5,6,7,8,9,10]" class="mt-1" [isOpen]="false"
-                    [hideSelected]="true" [placeholder]="'select Your Answer'">
-                </ng-select>
+                <div class="uk-flex uk-flex-middle">
+                    <h5 class="f_Medium mr-2">Level:</h5>
+                    <ng-select (change)="change()" [items]="levelArr" class="full_w" [placeholder]="'Level'" [(ngModel)]="level">
+                    </ng-select>
+                </div>
+
+            </div>
+
+            <div class="uk-width-1-3@l">
+
+                <div class="uk-flex uk-flex-middle">
+                    <h5 class="f_Medium mr-2">Symbol:</h5>
+                    <ng-select [items]="SymbolArr" bindLabel="value" bindValue="value" class="full_w" [placeholder]="'Symbol'">
+                    </ng-select>
+                </div>
 
             </div>
 

@@ -1,8 +1,22 @@
+.sec_form {
+    position: relative;
+    height: 100vh;
+    background-color: #e8f2f4;
+}
+
+.sec_form .body {
+    position: absolute;
+    bottom: 0;
+}
+
+.sec_form .box_ {
+    height: 85vh;
+    overflow-y: scroll ;
+}
 
 .sec_form .btn_add {
-    width: 12%;
+    width: 15%;
     height: 40px;
-    background-color: #3498db;
     border: none;
     transition: 0.5s;
 }
@@ -13,67 +27,4 @@
 
 .sec_form .nav_ {
     border-bottom: 1px solid #494949;
-}
-/**
-    Card
-*/
-
-.sec_form .card_.active_update {
-    background-color: #f2f2f2;
-    transition: 0.5s;
-}
-
-.sec_form .card_:hover {
-    background-color: #f2f2f2;
-}
-
-.sec_form .card_ .head_,
-.sec_form .card_ .footer_,
-.sec_form .card_ .input_question,
-.sec_form .card_ .title_ {
-    display: none;
-}
-
-.sec_form .card_.active_update .head_ {
-    display: flex;
-    height: 75px;
-    border-bottom: 1px solid #d9d9d9;
-}
-
-.sec_form .card_.active_update .footer_ {
-    display: flex;
-    height: 75px;
-    border-top: 1px solid #d9d9d9;
-}
-
-.sec_form .card_.active_update .input_question,
-.sec_form .card_.active_update .title_ {
-    display: block;
-}
-
-.sec_form .card_.active_update .question_ {
-    display: none;
-}
-
-.uk-input {
-    background-color: #e0e0e0 !important;
-}
-
-.uk-input.border_,
-.uk-textarea.border_ {
-    background-color: transparent !important;
-    border: 1px solid #e0e0e0 !important;
-}
-
-.uk-radio {
-    height: 20px !important;
-    width: 20px !important;
-}
-
-.uk-dropdown-nav li.uk-active a span {
-    display: block !important;
-}
-
-.uk-dropdown-nav li:hover {
-    background-color: #ebebeb;
 }
