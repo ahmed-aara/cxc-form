@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, Renderer2, RendererStyleFlags2, ViewChild } from '@angular/core';
+import { textData } from './module/data';
 declare const makeid: any, UIkit: any
 @Component({
   selector: 'app-root',
@@ -13,89 +14,6 @@ declare const makeid: any, UIkit: any
   ]
 })
 export class AppComponent implements OnInit {
-
-  @ViewChild('scrollMe') private myScrollContainer: ElementRef | undefined;
-
-  //Array
-  cardArr: any = [
-    // { type: 'text', id: makeid(11) },
-    // { type: 'rating', id: makeid(11) },
-    // { type: 'choice', id: makeid(11) },
-    // { type: 'date', id: makeid(11) },
-  ]
-
-  //Variable
-  add_btn_option: any = false
-
-  constructor(private renderer: Renderer2) { }
-
-  @ViewChild('sec_form', { static: false }) sec_form: any;
-
   ngOnInit(): void {
   }
-
-  receivedAction(data: any) {
-    if (data.type === 'delete') {
-      var index = this.cardArr.map((o: any) => { return o.id; }).indexOf(data.value);
-      this.cardArr.splice(index, 1)
-    } else if (data.type === 'change-data') {
-      console.log(data.value)
-    }
-  }
-
-  add(type: any) {
-    console.log(this.cardArr)
-    this.cardArr.push({ type: type, id: makeid(11) })
-    setTimeout(() => {
-      UIkit.scroll().scrollTo('.end_');
-    }, 100);
-  }
-
-  btnOption() {
-    this.add_btn_option = !this.add_btn_option
-    if (this.add_btn_option) {
-
-      this.myDOM('.btn_add',
-        [
-          { key: 'width', value: '70%' },
-        ]
-      )
-
-      this.myDOM('.btn_add .body_',
-        [
-          { key: 'display', value: 'none' },
-        ]
-      )
-
-      this.myDOM('.btn_add .buttons_',
-        [
-          { key: 'display', value: 'block' },
-        ]
-      )
-
-    } else if (!this.add_btn_option) {
-      this.myDOM('.btn_add',
-        [
-          { key: 'width', value: '12%' },
-        ]
-      )
-
-      this.myDOM('.btn_add .body_',
-        [
-          { key: 'display', value: 'flex' },
-        ]
-      )
-
-      this.myDOM('.btn_add .buttons_',
-        [
-          { key: 'display', value: 'none' },
-        ]
-      )
-    }
-  }
-
-  myDOM(_class: any, styleData: any) {
-    styleData.map((value: any) => { return this.renderer.setStyle(this.sec_form.nativeElement.querySelector(_class), value.key, value.value, RendererStyleFlags2.Important); })
-  }
-
 }

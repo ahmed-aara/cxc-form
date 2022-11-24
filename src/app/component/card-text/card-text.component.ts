@@ -13,20 +13,13 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 export class CardTextComponent implements OnInit {
 
   @Output() clickEvent = new EventEmitter();
-  @Input() id: string | undefined;
+  @Input() item: any | undefined;
 
   //Variable
-  option: any = {
-    long_text: false,
-    subtitle: false,
-    required: false,
-    question_text: 'Question',
-    subtitle_text: 'Question',
-  }
-
   constructor() { }
 
   ngOnInit() {
+
   }
 
   delete(id: any) {
@@ -34,11 +27,11 @@ export class CardTextComponent implements OnInit {
   }
 
   copy(data: any) {
-    this.clickEvent.emit({ type: 'copy', value: 'id' });
+    this.clickEvent.emit({ type: 'copy', value: data });
   }
 
-  changeValue() {
-    this.clickEvent.emit({ type: 'change-data', value: this.option });
+  changeValue(data: any, id: any) {
+    this.clickEvent.emit({ type: 'change-data', value: data, template_id: id });
   }
 
 }

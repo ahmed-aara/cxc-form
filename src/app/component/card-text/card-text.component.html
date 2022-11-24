@@ -7,31 +7,31 @@
     <div class="head_ px-4 uk-flex uk-flex-right uk-flex-middle">
 
         <div>
-            <img (click)="delete(id)" src="assets/img/test/trash.svg" alt="">
-            <img (click)="copy('copy')" class="ml-2" src="assets/img/test/copy.svg" alt="">
+            <img (click)="delete(item.id)" src="assets/img/test/trash.svg" alt="">
+            <img (click)="copy(item.data)" class="ml-2" src="assets/img/test/copy.svg" alt="">
         </div>
 
     </div>
 
     <div class="px-4 py-3">
 
-        <h3 class="f_Light mb-2 title_">Text <span *ngIf="option.required" class="redC_">*</span></h3>
+        <h3 class="f_Light mb-2 title_">Text <span *ngIf="item.data.required" class="redC_">*</span></h3>
 
         <div class="uk-grid-small uk-child-width-1-1@l" uk-grid>
 
             <div>
-                <h4 class="f_Light question_">1. Question</h4>
-                <input class="uk-input py-2 input_question" type="text" (input)="changeValue()"
-                    [(ngModel)]="option.question_text">
-                <input *ngIf="option.subtitle" class="uk-input py-2 mt-1" type="text" placeholder="Enter Subtitle"
-                    [(ngModel)]="option.subtitle_text">
+                <input class="uk-input py-2 input_question" type="text" (input)="changeValue(item.data, item.id)"
+                    [(ngModel)]="item.data.question_text">
+                <input *ngIf="item.data.subtitle" class="uk-input py-2 mt-1" type="text"
+                    (input)="changeValue(item.data,item.id)" placeholder="Enter Subtitle"
+                    [(ngModel)]="item.data.subtitle_text">
             </div>
 
             <div>
-                <input *ngIf="!option.long_text" disabled class="uk-input border_ py-2" type="text"
+                <input *ngIf="!item.data.long_text" disabled class="uk-input border_ py-2" type="text"
                     placeholder="Enter Your Answer">
 
-                <textarea *ngIf="option.long_text" disabled class="uk-textarea border_ py-2" name=""
+                <textarea *ngIf="item.data.long_text" disabled class="uk-textarea border_ py-2" name=""
                     placeholder="Enter Your Answer" rows="3"></textarea>
             </div>
 
@@ -42,15 +42,16 @@
     <div class="footer_ px-4 uk-flex uk-flex-right uk-flex-middle">
 
         <div class="uk-flex">
-
             <div class="uk-flex uk-flex-middle mr-3">
-                <ui-switch switchColor="#fff" color="#3498DB" size="small" [(ngModel)]="option.long_text">
+                <ui-switch switchColor="#fff" color="#3498DB" size="small" (click)="changeValue(item.data,item.id)"
+                    [(ngModel)]="item.data.long_text">
                 </ui-switch>
                 <p class="ml-2">Long Answer</p>
             </div>
 
             <div class="uk-flex uk-flex-middle mr-3">
-                <ui-switch switchColor="#fff" color="#3498DB" size="small" [(ngModel)]="option.required">
+                <ui-switch switchColor="#fff" color="#3498DB" size="small" (click)="changeValue(item.data,item.id)"
+                    [(ngModel)]="item.data.required">
                 </ui-switch>
                 <p class="ml-2">Required</p>
             </div>
@@ -59,8 +60,9 @@
             <div class="p-1" uk-dropdown="pos: top-right; mode: click">
                 <ul class="uk-nav uk-dropdown-nav">
                     <li class="p-1">
-                        <a (click)="option.subtitle = true">
-                            <span *ngIf="option.subtitle" class="mr-1" uk-icon="check"></span>
+                        <a
+                            (click)="item.data.subtitle? item.data.subtitle = false : item.data.subtitle = true; changeValue(item.data,item.id)">
+                            <span *ngIf="item.data.subtitle" class="mr-1" uk-icon="check"></span>
                             Subtitle
                         </a>
                     </li>

@@ -7,58 +7,72 @@
     <div class="head_ px-4 uk-flex uk-flex-right uk-flex-middle">
 
         <div>
-            <img (click)="delete(id)" src="assets/img/test/trash.svg" alt="">
-            <img (click)="copy('copy')" class="ml-2" src="assets/img/test/copy.svg" alt="">
+            <img (click)="delete(item.id)" src="assets/img/test/trash.svg" alt="">
+            <img (click)="copy(item.data,item.id)" class="ml-2" src="assets/img/test/copy.svg" alt="">
         </div>
 
     </div>
 
     <div class="px-4 py-3">
 
-        <h3 class="f_Light mb-2">Choice <span *ngIf="option.required" class="redC_">*</span></h3>
+        <h3 class="f_Light mb-2">Choice <span *ngIf="item.data.required" class="redC_">*</span></h3>
 
         <div class="uk-grid-small uk-child-width-1-1@l mb-3" uk-grid>
 
             <div>
-                <input class="uk-input py-2" type="text" value="Question">
-                <input *ngIf="option.subtitle" class="uk-input py-2 mt-1" type="text" placeholder="Enter Subtitle">
+                <input class="uk-input py-2" type="text" (input)="changeValue(item.data,item.id)"
+                    [(ngModel)]="item.data.question_text">
+                <input *ngIf="item.data.subtitle" class="uk-input py-2 mt-1" (input)="changeValue(item.data,item.id)"
+                    [(ngModel)]="item.data.subtitle_text" type="text" placeholder="Enter Subtitle">
 
                 <div class="uk-width-2-3">
-                    <ng-select *ngIf="option.drop_down" [items]="[]" class="mt-1" [isOpen]="false" [hideSelected]="true"
-                        [placeholder]="'select Your Answer'">
+                    <ng-select *ngIf="item.data.drop_down" [items]="[]" class="mt-1" [isOpen]="false"
+                        [hideSelected]="true" [placeholder]="'select Your Answer'">
                     </ng-select>
                 </div>
             </div>
+            <!--  -->
 
-            <div *ngIf="optionArr.length !== 0" class="uk-grid-small uk-child-width-1-1@l ml-2" uk-grid>
+            <div *ngIf="item.data.options.length !== 0" class="uk-grid-small uk-child-width-1-1@l ml-2" uk-grid>
 
-                <div *ngFor="let item of optionArr">
+                <div *ngFor="let option of item.data.options; let i = index">
+
                     <div class="uk-grid-small uk-flex uk-flex-middle" uk-grid>
-
-                        <div *ngIf="!option.drop_down" class="uk-width-auto">
-                            <input *ngIf="!option.multiple_answers" disabled class="uk-radio" type="radio"
+                        <div *ngIf="!item.data.drop_down" class="uk-width-auto">
+                            <input *ngIf="!item.data.multiple_answers" disabled class="uk-radio" type="radio"
                                 name="radio2">
-                            <input *ngIf="option.multiple_answers" disabled class="uk-checkbox" type="checkbox">
+                            <input *ngIf="item.data.multiple_answers" disabled class="uk-checkbox" type="checkbox">
                         </div>
 
                         <div class="uk-width-1-2">
-                            <input class="uk-input py-2" type="text" placeholder="Enter Your Option">
+                            <input class="uk-input py-2" type="text" placeholder="Enter Your Option"
+                                [(ngModel)]="option.name">
+                        </div>
+
+                        <div>
+                            <span (click)="deleteArr(i)" class="redC_" uk-icon="trash"></span>
                         </div>
 
                     </div>
+
                 </div>
 
-                <div *ngIf="other">
+                <div *ngIf="item.data.other_option">
                     <div class="uk-grid-small uk-flex uk-flex-middle" uk-grid>
 
-                        <div *ngIf="!option.drop_down" class="uk-width-auto">
-                            <input *ngIf="!option.multiple_answers" disabled class="uk-radio" type="radio"
+                        <div *ngIf="!item.data.drop_down" class="uk-width-auto">
+                            <input *ngIf="!item.data.multiple_answers" disabled class="uk-radio" type="radio"
                                 name="radio2">
-                            <input *ngIf="option.multiple_answers" disabled class="uk-checkbox" type="checkbox">
+                            <input *ngIf="item.data.multiple_answers" disabled class="uk-checkbox" type="checkbox">
                         </div>
 
                         <div class="uk-width-1-2">
                             <input disabled class="uk-input py-2" type="text" value="Other">
+                        </div>
+
+                        <div>
+                            <span (click)="item.data.other_option = false;changeValue(item.data,item.id)" class="redC_"
+                                uk-icon="trash"></span>
                         </div>
 
                     </div>
@@ -70,13 +84,17 @@
 
         <div class="uk-flex">
 
-            <button (click)="addOption()" class="p-1 greenBG_ whiteC_ uk-flex uk-flex-middle cursor"><span
-                    uk-icon="plus"></span>
+            <button (click)="asdasd(item.id);changeValue(item.data,item.id)"
+                class="p-1 greenBG_ whiteC_ uk-flex uk-flex-middle cursor"><span uk-icon="plus"></span>
                 &nbsp;
                 Add Option</button>
 
-            <button (click)="other = true" class="p-1 greenBG_ whiteC_ uk-flex uk-flex-middle cursor ml-1">Add "Other"
-                option</button>
+            <button *ngIf="item.data.options.length !== 0"
+                (click)="item.data.other_option? item.data.other_option = false : item.data.other_option = true; changeValue(item.data,item.id)"
+                [ngClass]="item.data.other_option? 'redBG_': 'greenBG_'"
+                class="p-1 whiteC_ uk-flex uk-flex-middle cursor ml-1">{{item.data.other_option? 'Delete' : 'Add'}}
+                "Other"
+                Option</button>
 
         </div>
 
@@ -86,14 +104,16 @@
 
         <div class="uk-flex">
 
-            <div *ngIf="!option.drop_down" class="uk-flex uk-flex-middle mr-3">
-                <ui-switch switchColor="#fff" color="#3498DB" size="small" [(ngModel)]="option.multiple_answers">
+            <div *ngIf="!item.data.drop_down" class="uk-flex uk-flex-middle mr-3">
+                <ui-switch switchColor="#fff" color="#3498DB" size="small" (click)="changeValue(item.data,item.id)"
+                    [(ngModel)]="item.data.multiple_answers">
                 </ui-switch>
                 <p class="ml-2">Multiple Answers</p>
             </div>
 
             <div class="uk-flex uk-flex-middle mr-3">
-                <ui-switch switchColor="#fff" color="#3498DB" size="small" [(ngModel)]="option.required">
+                <ui-switch switchColor="#fff" color="#3498DB" size="small" (click)="changeValue(item.data,item.id)"
+                    [(ngModel)]="item.data.required">
                 </ui-switch>
                 <p class="ml-2">Required</p>
             </div>
@@ -102,16 +122,18 @@
             <div class="p-1" uk-dropdown="pos: top-right; mode: click">
                 <ul class="uk-nav uk-dropdown-nav">
                     <li class="p-1">
-                        <a (click)="option.subtitle = true">
-                            <span *ngIf="option.subtitle" class="mr-1" uk-icon="check"></span>
+                        <a
+                            (click)="item.data.subtitle? item.data.subtitle = false : item.data.subtitle = true; changeValue(item.data,item.id)">
+                            <span *ngIf="item.data.subtitle" class="mr-1" uk-icon="check"></span>
                             Subtitle
                         </a>
 
                     </li>
 
                     <li class="p-1">
-                        <a (click)="option.drop_down = true">
-                            <span *ngIf="option.drop_down" class="mr-1" uk-icon="check"></span>
+                        <a
+                            (click)="item.data.drop_down? item.data.drop_down = false : item.data.drop_down = true; changeValue(item.data,item.id)">
+                            <span *ngIf="item.data.drop_down" class="mr-1" uk-icon="check"></span>
                             Drop Down
                         </a>
                     </li>

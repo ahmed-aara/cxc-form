@@ -14,6 +14,7 @@ import { CardChoiceComponent } from './component/card-choice/card-choice.compone
 import { CardDateComponent } from './component/card-date/card-date.component';
 import { CardRatingComponent } from './component/card-rating/card-rating.component';
 import { TestComponent } from './page/test/test.component';
+import { HomeComponent } from './page/home/home.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TestComponent } from './page/test/test.component';
     CardChoiceComponent,
     CardDateComponent,
     CardRatingComponent,
-    TestComponent
+    TestComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
