@@ -19,13 +19,15 @@
     border-top: 1px solid #d9d9d9;
 }
 
-.num_ {
-    text-align: center;
-    border: 1px solid #383838;
+.box_ {
+    border: 1px solid #d3d3d3;
+    color: #d3d3d3 !important;
+    border-right: none;
+    flex-grow: 1;
 }
 
-.img-icon {
-    width: 35px;
+.box_:last-child {
+    border-right: 1px solid #d3d3d3;
 }
 
 ///////

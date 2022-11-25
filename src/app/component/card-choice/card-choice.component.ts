@@ -15,31 +15,10 @@ export class CardChoiceComponent implements OnInit {
   @Output() clickEvent = new EventEmitter();
   @Input() item: any | undefined;
 
-  //
-  arr: any = []
-
-
   constructor() { }
 
   ngOnInit() {
 
-    for (let x of this.item.data.options) {
-      this.arr.push(x)
-    }
-
-  }
-
-  test(index: any) {
-
-
-
-    this.item.data.options[index] = { name: 'ts' }
-  }
-
-  addOption() {
-    // console.log(id)
-    // this.item.data.options.push({ name: 'Option' })
-    this.arr.push({ name: 'Option' })
   }
 
   delete(id: any) {
@@ -47,16 +26,16 @@ export class CardChoiceComponent implements OnInit {
   }
 
   copy(data: any, id: any) {
-    this.clickEvent.emit({ type: 'copy', value: data, template_id: id, arr: this.arr });
+    this.clickEvent.emit({ type: 'copy', value: data, template_id: id });
   }
 
   changeValue(data: any, id: any) {
-    this.clickEvent.emit({ type: 'change-data', value: data, template_id: id, arr: this.arr });
+    this.clickEvent.emit({ type: 'change-data', value: data, template_id: id });
   }
 
-
-  asdasd(id: any) {
-    this.clickEvent.emit({ type: 'test', template_id: id });
+  addOption(id: any) {
+    this.item.data.options.push({ name: 'Option' })
+    // this.clickEvent.emit({ type: 'add-option', template_id: id });
   }
 
   deleteArr(index: any) {
@@ -68,5 +47,6 @@ export class CardChoiceComponent implements OnInit {
     this.item.data.options[index] = { name: inputValue }
     console.log(inputValue)
   }
+
 
 }

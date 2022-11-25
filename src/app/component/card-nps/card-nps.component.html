@@ -15,7 +15,7 @@
 
     <div class="px-4 py-3">
 
-        <h3 class="f_Light mb-2 title_">Date <span *ngIf="item.data.required" class="redC_">*</span></h3>
+        <h3 class="f_Light mb-2 title_">Net Promoter Score <span *ngIf="item.data.required" class="redC_">*</span></h3>
 
         <div class="uk-grid-small uk-child-width-1-1@l" uk-grid>
 
@@ -28,13 +28,25 @@
             </div>
 
             <div>
-
-                <div class="uk-inline full_w">
-                    <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: calendar"></span>
-                    <input disabled class="uk-input border_ py-2" type="date" placeholder="Enter Your Answer">
+                <div class="uk-flex">
+                    <div *ngFor="let item of [0,0,0,0,0,0,0,0,0,0]; let i = index" class="box_ text-center py-2">{{i+1}}
+                    </div>
                 </div>
+            </div>
 
+            <div class="uk-width-1-2">
+                <p class="text-left mb-1">{{item.data.bad_text}}</p>
+                <input class="uk-input uk-width-2-3" type="text" placeholder="Enter Label"
+                    (input)="changeValue(item.data,item.id)" [(ngModel)]="item.data.bad_text">
+            </div>
 
+            <div class="uk-width-1-2 ">
+                <p class="text-right mb-1">{{item.data.good_text}}</p>
+                <div class="uk-flex uk-flex-right">
+                    <input class="uk-input uk-width-2-3" type="text" placeholder="Enter Label"
+                        (input)="changeValue(item.data,item.id)" [(ngModel)]="item.data.good_text">
+
+                </div>
             </div>
 
         </div>
@@ -44,7 +56,6 @@
     <div class="footer_ px-4 uk-flex uk-flex-right uk-flex-middle">
 
         <div class="uk-flex">
-
 
             <div class="uk-flex uk-flex-middle mr-3">
                 <ui-switch switchColor="#fff" color="#3498DB" size="small" (click)="changeValue(item.data,item.id)"

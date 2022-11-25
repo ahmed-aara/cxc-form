@@ -13,9 +13,8 @@
     height: 85vh;
     position: absolute;
     bottom: 0;
-    overflow:auto;
+    overflow: auto;
 }
-
 
 .sec_form .btn_add {
     width: 15%;
@@ -30,4 +29,12 @@
 
 .sec_form .nav_ {
     border-bottom: 1px solid #494949;
+}
+
+.uk-dropdown-nav li.uk-active a span {
+    display: block !important;
+}
+
+.uk-dropdown-nav li:hover {
+    background-color: #ebebeb;
 }

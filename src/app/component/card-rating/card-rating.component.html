@@ -7,37 +7,64 @@
     <div class="head_ px-4 uk-flex uk-flex-right uk-flex-middle">
 
         <div>
-            <img (click)="delete(id)" src="assets/img/test/trash.svg" alt="">
-            <img (click)="copy('copy')" class="ml-2" src="assets/img/test/copy.svg" alt="">
+            <img (click)="delete(item.id)" src="assets/img/test/trash.svg" alt="">
+            <img (click)="copy(item.data)" class="ml-2" src="assets/img/test/copy.svg" alt="">
         </div>
 
     </div>
 
     <div class="px-4 py-3">
 
-        <h3 class="f_Light mb-2 title_">Rating <span *ngIf="option.required" class="redC_">*</span></h3>
+        <h3 class="f_Light mb-2 title_">Rating <span *ngIf="item.data.required" class="redC_">*</span></h3>
 
         <div class="uk-grid-small uk-child-width-1-1@l" uk-grid>
 
             <div>
-                <h4 class="f_Light question_">1. Question</h4>
-                <input class="uk-input py-2 input_question" type="text" value="Question">
-                <input *ngIf="option.subtitle" class="uk-input py-2 mt-1" type="text" placeholder="Enter Subtitle">
+                <input class="uk-input py-2 input_question" type="text" (input)="changeValue(item.data, item.id)"
+                    [(ngModel)]="item.data.question_text">
+                <input *ngIf="item.data.subtitle" class="uk-input py-2 mt-1" type="text"
+                    (input)="changeValue(item.data,item.id)" placeholder="Enter Subtitle"
+                    [(ngModel)]="item.data.subtitle_text">
             </div>
 
             <div>
-                
+
                 <div class="uk-flex">
-                    <div *ngFor="let item of rateArr" class="circle mr-1"></div>
+                    <div *ngFor="let rate of rateArr; let i = index" class="mr-1">
+
+                        <img *ngIf="item.data.symbol === 'star'" class="img-icon" src="assets/img/test/rating/star.svg"
+                            alt="">
+                        <img *ngIf="item.data.symbol === 'thumb like'" class="img-icon"
+                            src="assets/img/test/rating/like.svg" alt="">
+                        <img *ngIf="item.data.symbol === 'smile face'" class="img-icon"
+                            src="assets/img/test/rating/smile-face.svg" alt="">
+                        <img *ngIf="item.data.symbol === 'heart'" class="img-icon"
+                            src="assets/img/test/rating/heart.svg" alt="">
+                        <img *ngIf="item.data.symbol === 'checkmark'" class="img-icon"
+                            src="assets/img/test/rating/checkmark.svg" alt="">
+                        <img *ngIf="item.data.symbol === 'trophy'" class="img-icon"
+                            src="assets/img/test/rating/trophy.svg" alt="">
+                        <img *ngIf="item.data.symbol === 'flag'" class="img-icon" src="assets/img/test/rating/flag.svg"
+                            alt="">
+                        <img *ngIf="item.data.symbol === 'lightbulb'" class="img-icon"
+                            src="assets/img/test/rating/lightbulb.svg" alt="">
+                        <img *ngIf="item.data.symbol === 'ribbon'" class="img-icon"
+                            src="assets/img/test/rating/ribbon.svg" alt="">
+
+                        <div *ngIf="item.data.symbol === 'number'"
+                            class="num_ uk-flex uk-flex-middle uk-flex-center py-2 px-3">{{ i + 1 }}</div>
+
+                    </div>
                 </div>
 
             </div>
 
-            <div class="uk-width-1-3@l">
+            <div class="uk-width-1-4@l">
 
                 <div class="uk-flex uk-flex-middle">
                     <h5 class="f_Medium mr-2">Level:</h5>
-                    <ng-select (change)="change()" [items]="levelArr" class="full_w" [placeholder]="'Level'" [(ngModel)]="level">
+                    <ng-select (change)="change();changeValue(item.data,item.id)" [items]="levelArr" class="full_w"
+                        [placeholder]="'Level'" [(ngModel)]="item.data.level">
                     </ng-select>
                 </div>
 
@@ -47,8 +74,50 @@
 
                 <div class="uk-flex uk-flex-middle">
                     <h5 class="f_Medium mr-2">Symbol:</h5>
-                    <ng-select [items]="SymbolArr" bindLabel="value" bindValue="value" class="full_w" [placeholder]="'Symbol'">
+
+                    <ng-select (change)="changeValue(item.data,item.id)" [items]="SymbolArr" bindLabel="value"
+                        bindValue="value" class="full_w" [placeholder]="'Select Symbol'" [(ngModel)]="item.data.symbol">
+                        <ng-template ng-label-tmp let-item="item">
+                            <img height="15" width="15" [src]="item.icon" />
+                            {{item.value | titlecase}}
+                        </ng-template>
+
+                        <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                            <img height="15" width="15" [src]="item.icon" />
+                            {{item.value | titlecase}}
+                        </ng-template>
+
                     </ng-select>
+
+
+                </div>
+
+            </div>
+
+            <div *ngIf="item.data.label">
+
+                <div class="uk-grid-collapse uk-flex uk-flex-middle" uk-grid>
+
+                    <div style="width: 80px;" class="uk-width-auto">
+                        <h5 class="mr-1">1 {{item.data.symbol | titlecase}}</h5>
+                    </div>
+
+                    <div class="uk-width-1-3">
+                        <input class="uk-input" type="text" placeholder="Enter Label"
+                            (input)="changeValue(item.data,item.id)" [(ngModel)]="item.data.label_start">
+                    </div>
+
+                    <div class="uk-width-1-1@l mb-2"></div>
+
+                    <div style="width: 80px;" class="uk-width-auto">
+                        <h5 class="mr-1">{{item.data.level}} {{item.data.symbol | titlecase}}</h5>
+                    </div>
+
+                    <div class="uk-width-1-3">
+                        <input class="uk-input" type="text" placeholder="Enter Label"
+                            (input)="changeValue(item.data,item.id)" [(ngModel)]="item.data.label_end">
+                    </div>
+
                 </div>
 
             </div>
@@ -62,13 +131,8 @@
         <div class="uk-flex">
 
             <div class="uk-flex uk-flex-middle mr-3">
-                <ui-switch switchColor="#fff" color="#3498DB" size="small" [(ngModel)]="option.long_text">
-                </ui-switch>
-                <p class="ml-2">Long Answer</p>
-            </div>
-
-            <div class="uk-flex uk-flex-middle mr-3">
-                <ui-switch switchColor="#fff" color="#3498DB" size="small" [(ngModel)]="option.required">
+                <ui-switch switchColor="#fff" color="#3498DB" size="small" (click)="changeValue(item.data,item.id)"
+                    [(ngModel)]="item.data.required">
                 </ui-switch>
                 <p class="ml-2">Required</p>
             </div>
@@ -77,9 +141,18 @@
             <div class="p-1" uk-dropdown="pos: top-right; mode: click">
                 <ul class="uk-nav uk-dropdown-nav">
                     <li class="p-1">
-                        <a (click)="option.subtitle = true">
-                            <span *ngIf="option.subtitle" class="mr-1" uk-icon="check"></span>
+                        <a
+                            (click)="item.data.subtitle? item.data.subtitle = false : item.data.subtitle = true; changeValue(item.data,item.id)">
+                            <span *ngIf="item.data.subtitle" class="mr-1" uk-icon="check"></span>
                             Subtitle
+                        </a>
+                    </li>
+
+                    <li class="p-1">
+                        <a
+                            (click)="item.data.label? item.data.label = false : item.data.label = true; changeValue(item.data,item.id)">
+                            <span *ngIf="item.data.label" class="mr-1" uk-icon="check"></span>
+                            Label
                         </a>
                     </li>
                 </ul>

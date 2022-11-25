@@ -34,12 +34,9 @@
 
     </div>
 
-    <button (click)="test()">tes</button>
-
     <div #contentRef class="body full_w">
 
         <div class="uk-container whiteBG_ full_w">
-
 
             <div class="whiteBG_ px-3 py-3 whiteBG_ box_">
 
@@ -47,26 +44,29 @@
 
                     <div *ngFor="let item of cardArr">
 
-                        <app-card-text (clickEvent)="receivedAction($event)" *ngIf="item.type === 'text'"
-                            [item]="item">
+                        <app-card-text (clickEvent)="receivedAction($event)" *ngIf="item.type === 'text'" [item]="item">
                         </app-card-text>
                         <app-card-choice (clickEvent)="receivedAction($event)" *ngIf="item.type === 'choice'"
                             [item]="item">
                         </app-card-choice>
-                        <app-card-date (clickEvent)="receivedAction($event)" *ngIf="item.type === 'date'"
-                            [id]="item.id">
+                        <app-card-date (clickEvent)="receivedAction($event)" *ngIf="item.type === 'date'" [item]="item">
                         </app-card-date>
                         <app-card-rating (clickEvent)="receivedAction($event)" *ngIf="item.type === 'rating'"
-                            [id]="item.id">
+                            [item]="item">
                         </app-card-rating>
+                        <app-card-nps (clickEvent)="receivedAction($event)" *ngIf="item.type === 'nps'" [item]="item">
+                        </app-card-nps>
 
+                    </div>
+
+                    <div>
                     </div>
 
                 </div>
 
-                <div (click)="btnOption()" class="btn_add greenBG_ py-2 px-1 cursor mt-2">
+                <div  class="btn_add greenBG_ py-2 px-1 cursor mt-2">
 
-                    <div class="uk-flex uk-flex-center uk-flex-middle body_ full_h">
+                    <div (click)="open_btn_option = true; btnOption()" class="uk-flex uk-flex-center uk-flex-middle body_ full_h">
                         <span class="whiteC_" uk-icon="icon: plus"></span>
                         <p class="m-0 whiteC_ pl-1">Add New</p>
                     </div>
@@ -76,8 +76,8 @@
                         <div class="uk-grid-small full_h" uk-grid>
 
                             <div class="uk-width-auto">
-                                <button class="full_w full_h whiteBG_ px-1">
-                                    <span class="blackC_" uk-icon="icon: plus"></span>
+                                <button (click)="open_btn_option = false;btnOption()" class="full_w full_h whiteBG_ px-1 cursor">
+                                    <span class="blackC_" uk-icon="icon: close"></span>
                                 </button>
                             </div>
 
@@ -133,11 +133,46 @@
 
                             </div>
 
+                            <div class="uk-width-auto">
+                                <button class="full_w full_h whiteBG_ px-1 cursor">
+                                    <span class="blackC_" uk-icon="icon: chevron-down"></span>
+                                </button>
+                                <div class="p-1" uk-dropdown="pos: bottom-right; mode: click">
+                                    <ul class="uk-nav uk-dropdown-nav">
+                                        <li class="p-1">
+                                            <a>
+                                                <span class="mr-1" uk-icon="check"></span>
+                                                Net Promoter Score
+                                            </a>
+                                        </li>
+                                        <li class="p-1">
+                                            <a>
+                                                <span class="mr-1" uk-icon="check"></span>
+                                                Subtitle
+                                            </a>
+                                        </li>
+                                        <li class="p-1">
+                                            <a>
+                                                <span class="mr-1" uk-icon="check"></span>
+                                                Subtitle
+                                            </a>
+                                        </li><li class="p-1">
+                                            <a>
+                                                <span class="mr-1" uk-icon="check"></span>
+                                                Subtitle
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
                         </div>
 
                     </div>
 
                 </div>
+
+                <button class="blueBG_ whiteC_ py-2 px-3" (click)="final()">Final</button>
 
                 <div class="end_ mt-5"></div>
 
@@ -149,4 +184,3 @@
 
 
 </section>
-

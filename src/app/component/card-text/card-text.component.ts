@@ -15,7 +15,6 @@ export class CardTextComponent implements OnInit {
   @Output() clickEvent = new EventEmitter();
   @Input() item: any | undefined;
 
-  //Variable
   constructor() { }
 
   ngOnInit() {

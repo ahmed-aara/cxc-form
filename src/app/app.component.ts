@@ -15,5 +15,11 @@ declare const makeid: any, UIkit: any
 })
 export class AppComponent implements OnInit {
   ngOnInit(): void {
+
+    if (localStorage.getItem('card') === null) {
+      localStorage.setItem('card', JSON.stringify([]))
+    }
+
+    console.log()
   }
 }
