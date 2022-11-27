@@ -1,0 +1,21 @@
+.box_ {
+    border: 1px solid #383838;
+    border-right: none;
+    flex-grow: 1;
+}
+
+.box_:last-child {
+    border-right: 1px solid #383838;
+}
+
+.box_:hover {
+    color: white !important;
+    background-color: #03787C;
+}
+
+.line_ {
+    margin: 30px auto;
+    width: 70%;
+    height: 1px;
+    background-color: #e8f2f4;
+}

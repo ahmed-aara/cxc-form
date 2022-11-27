@@ -1,0 +1,12 @@
+<div>
+    <h4 class="mb-2">{{arrange+1}}. {{item.data.question_text}} <span class="redC_" *ngIf="item.data.required">*</span>
+    </h4>
+    <h5 *ngIf="item.data.subtitle">{{item.data.subtitle_text}}</h5>
+
+    <input *ngIf="!item.data.long_text" class="uk-input mt-1" type="text" placeholder="Enter Your Answer">
+    <textarea *ngIf="item.data.long_text" class="uk-textarea mt-1" name="" placeholder="Enter Your Answer"
+        rows="3"></textarea>
+
+    <div class="line_"></div>
+
+</div>

@@ -1,33 +1,41 @@
 <div class="card_">
 
     <div class="uk-flex uk-flex-center pt-3">
-        <span class="uk-sortable-handle uk-margin-small-right uk-text-center" uk-icon="icon: table"></span>
+        <span (mouseover)="mouseOver()" class="uk-sortable-handle uk-margin-small-right uk-text-center"
+            uk-icon="icon: table"></span>
     </div>
 
-    <div class="head_ px-4 uk-flex uk-flex-right uk-flex-middle">
+    <div *ngIf="!close" class="head_ px-4 uk-flex uk-flex-right uk-flex-middle">
 
         <div>
             <img (click)="delete(item.id)" src="assets/img/test/trash.svg" alt="">
-            <img (click)="copy(item.data)" class="ml-2" src="assets/img/test/copy.svg" alt="">
+            <img (click)="copy(item.data,item.id)" class="ml-2" src="assets/img/test/copy.svg" alt="">
         </div>
 
     </div>
 
     <div class="px-4 py-3">
 
-        <h3 class="f_Light mb-2 title_">Rating <span *ngIf="item.data.required" class="redC_">*</span></h3>
+        <h5 class="f_Bold mb-2 title_">Rating <span *ngIf="item.data.required" class="redC_">*</span></h5>
 
         <div class="uk-grid-small uk-child-width-1-1@l" uk-grid>
 
             <div>
-                <input class="uk-input py-2 input_question" type="text" (input)="changeValue(item.data, item.id)"
-                    [(ngModel)]="item.data.question_text">
-                <input *ngIf="item.data.subtitle" class="uk-input py-2 mt-1" type="text"
-                    (input)="changeValue(item.data,item.id)" placeholder="Enter Subtitle"
-                    [(ngModel)]="item.data.subtitle_text">
+                <div class="uk-flex uk-flex-middle">
+                    <p class="mr-1">{{arrange + 1}}-</p>
+                    <input class="uk-input py-2 input_question" type="text" (input)="changeValue(item.data, item.id)"
+                        [(ngModel)]="item.data.question_text">
+                </div>
+
+                <div *ngIf="!close">
+                    <input *ngIf="item.data.subtitle" class="uk-input py-2 mt-1" type="text"
+                        (input)="changeValue(item.data,item.id)" placeholder="Enter Subtitle"
+                        [(ngModel)]="item.data.subtitle_text">
+                </div>
+
             </div>
 
-            <div>
+            <div *ngIf="!close">
 
                 <div class="uk-flex">
                     <div *ngFor="let rate of rateArr; let i = index" class="mr-1">
@@ -59,7 +67,7 @@
 
             </div>
 
-            <div class="uk-width-1-4@l">
+            <div *ngIf="!close" class="uk-width-1-4@l">
 
                 <div class="uk-flex uk-flex-middle">
                     <h5 class="f_Medium mr-2">Level:</h5>
@@ -70,7 +78,7 @@
 
             </div>
 
-            <div class="uk-width-1-3@l">
+            <div *ngIf="!close" class="uk-width-1-3@l">
 
                 <div class="uk-flex uk-flex-middle">
                     <h5 class="f_Medium mr-2">Symbol:</h5>
@@ -94,28 +102,32 @@
 
             </div>
 
-            <div *ngIf="item.data.label">
+            <div *ngIf="!close">
 
-                <div class="uk-grid-collapse uk-flex uk-flex-middle" uk-grid>
+                <div *ngIf="item.data.label">
 
-                    <div style="width: 80px;" class="uk-width-auto">
-                        <h5 class="mr-1">1 {{item.data.symbol | titlecase}}</h5>
-                    </div>
+                    <div class="uk-grid-collapse uk-flex uk-flex-middle" uk-grid>
 
-                    <div class="uk-width-1-3">
-                        <input class="uk-input" type="text" placeholder="Enter Label"
-                            (input)="changeValue(item.data,item.id)" [(ngModel)]="item.data.label_start">
-                    </div>
+                        <div style="width: 80px;" class="uk-width-auto">
+                            <h5 class="mr-1">1 {{item.data.symbol | titlecase}}</h5>
+                        </div>
 
-                    <div class="uk-width-1-1@l mb-2"></div>
+                        <div class="uk-width-1-3">
+                            <input class="uk-input" type="text" placeholder="Enter Label"
+                                (input)="changeValue(item.data,item.id)" [(ngModel)]="item.data.label_start">
+                        </div>
 
-                    <div style="width: 80px;" class="uk-width-auto">
-                        <h5 class="mr-1">{{item.data.level}} {{item.data.symbol | titlecase}}</h5>
-                    </div>
+                        <div class="uk-width-1-1@l mb-2"></div>
 
-                    <div class="uk-width-1-3">
-                        <input class="uk-input" type="text" placeholder="Enter Label"
-                            (input)="changeValue(item.data,item.id)" [(ngModel)]="item.data.label_end">
+                        <div style="width: 80px;" class="uk-width-auto">
+                            <h5 class="mr-1">{{item.data.level}} {{item.data.symbol | titlecase}}</h5>
+                        </div>
+
+                        <div class="uk-width-1-3">
+                            <input class="uk-input" type="text" placeholder="Enter Label"
+                                (input)="changeValue(item.data,item.id)" [(ngModel)]="item.data.label_end">
+                        </div>
+
                     </div>
 
                 </div>
@@ -126,7 +138,7 @@
 
     </div>
 
-    <div class="footer_ px-4 uk-flex uk-flex-right uk-flex-middle">
+    <div *ngIf="!close" class="footer_ px-4 uk-flex uk-flex-right uk-flex-middle">
 
         <div class="uk-flex">
 

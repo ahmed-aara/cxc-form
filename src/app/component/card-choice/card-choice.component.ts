@@ -14,6 +14,8 @@ export class CardChoiceComponent implements OnInit {
 
   @Output() clickEvent = new EventEmitter();
   @Input() item: any | undefined;
+  @Input() arrange: any | undefined;
+  @Input() close: any | undefined;
 
   constructor() { }
 
@@ -34,12 +36,15 @@ export class CardChoiceComponent implements OnInit {
   }
 
   addOption(id: any) {
-    this.item.data.options.push({ name: 'Option' })
-    // this.clickEvent.emit({ type: 'add-option', template_id: id });
+    this.clickEvent.emit({ type: 'add-option', template_id: id });
   }
 
-  deleteArr(index: any) {
-    this.item.data.options.splice(index, 1)
+  deleteArr(index: any, id: any) {
+    this.clickEvent.emit({ type: 'delete-option', template_id: id, index: index });
+  }
+
+  mouseOver() {
+    this.clickEvent.emit({ type: 'mouse-over' });
   }
 
   onKey(event: any, index: any) {

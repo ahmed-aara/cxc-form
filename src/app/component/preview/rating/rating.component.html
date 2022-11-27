@@ -1,0 +1,19 @@
+<div>
+    <h4 class="mb-2">{{arrange+1}}. {{item.data.question_text}} <span class="redC_" *ngIf="item.data.required">*</span>
+    </h4>
+    <h5 *ngIf="item.data.subtitle">{{item.data.subtitle_text}}</h5>
+
+    <div class="uk-grid-small uk-child-width-auto mt-1" uk-grid>
+
+        <div *ngFor="let star of stars">
+            <app-star [starId]="star" [rating]="hoverState || rating" [width]="35" [symbol]="item.data.symbol"
+                (enter)="enter($event)" (leave)="leave($event)" (bigClick)="updateRating(star)">
+            </app-star>
+        </div>
+
+    </div>
+
+
+    <div class="line_"></div>
+
+</div>

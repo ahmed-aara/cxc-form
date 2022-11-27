@@ -1,0 +1,28 @@
+<div>
+    <h4 class="mb-2">{{arrange+1}}. {{item.data.question_text}} <span class="redC_" *ngIf="item.data.required">*</span>
+    </h4>
+    <h5 *ngIf="item.data.subtitle">{{item.data.subtitle_text}}</h5>
+
+    <div class="uk-flex mt-1">
+        <div *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]; let i = index"
+            [ngClass]="value === item? 'greenBG_ whiteC_' : '-'" class="box_ text-center py-2" (click)="test(item)">
+            {{i+1}}
+        </div>
+    </div>
+
+    <div class="uk-grid-small" uk-grid>
+
+        <div class="uk-width-1-2">
+            <p class="text-left mb-1">{{item.data.bad_text}}</p>
+
+        </div>
+
+        <div class="uk-width-1-2 ">
+            <p class="text-right mb-1">{{item.data.good_text}}</p>
+        </div>
+
+    </div>
+
+    <div class="line_"></div>
+
+</div>

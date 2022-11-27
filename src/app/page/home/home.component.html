@@ -18,12 +18,13 @@
                 <div class="uk-navbar-right">
 
                     <ul class="uk-navbar-nav">
-                        <li class="uk-active  py-3">
-                            <div class="uk-flex uk-flex-center uk-flex-middle">
-
-                                <img width="20%" src="../../../assets/img/test/eye.svg" alt="">
-                                <p class="ml-1 whiteC_">Preview</p>
-                            </div>
+                        <li class="uk-active btn">
+                            <a routerLink="/preview" class=" p-2 cursor">
+                                <div class="uk-flex uk-flex-center uk-flex-middle">
+                                    <img width="20%" src="assets/img/test/eye.svg" alt="">
+                                    <p class="ml-1 whiteC_">Preview</p>
+                                </div>
+                            </a>
                         </li>
                     </ul>
 
@@ -34,39 +35,41 @@
 
     </div>
 
-    <div #contentRef class="body full_w">
+    <div class="body full_w">
 
         <div class="uk-container whiteBG_ full_w">
 
             <div class="whiteBG_ px-3 py-3 whiteBG_ box_">
 
-                <div class="uk-grid-small uk-child-width-1-1@l" uk-sortable="handle: .uk-sortable-handle" uk-grid>
+                <div class="uk-grid-small uk-child-width-1-1@l sortable_" uk-sortable="handle: .uk-sortable-handle"
+                    uk-grid>
 
-                    <div *ngFor="let item of cardArr">
+                    <div *ngFor="let item of cardArr; let i = index;" id="{{i}}">
 
-                        <app-card-text (clickEvent)="receivedAction($event)" *ngIf="item.type === 'text'" [item]="item">
+                        <app-card-text (clickEvent)="receivedAction($event)" *ngIf="item.type === 'text'" [item]="item"
+                            [close]="close" [arrange]="i">
                         </app-card-text>
                         <app-card-choice (clickEvent)="receivedAction($event)" *ngIf="item.type === 'choice'"
-                            [item]="item">
+                            [item]="item" [close]="close" [arrange]="i">
                         </app-card-choice>
-                        <app-card-date (clickEvent)="receivedAction($event)" *ngIf="item.type === 'date'" [item]="item">
+                        <app-card-date (clickEvent)="receivedAction($event)" *ngIf="item.type === 'date'" [item]="item"
+                            [close]="close" [arrange]="i">
                         </app-card-date>
                         <app-card-rating (clickEvent)="receivedAction($event)" *ngIf="item.type === 'rating'"
-                            [item]="item">
+                            [item]="item" [close]="close" [arrange]="i">
                         </app-card-rating>
-                        <app-card-nps (clickEvent)="receivedAction($event)" *ngIf="item.type === 'nps'" [item]="item">
+                        <app-card-nps (clickEvent)="receivedAction($event)" *ngIf="item.type === 'nps'" [item]="item"
+                            [close]="close" [arrange]="i">
                         </app-card-nps>
 
                     </div>
 
-                    <div>
-                    </div>
-
                 </div>
 
-                <div  class="btn_add greenBG_ py-2 px-1 cursor mt-2">
+                <div class="btn_add greenBG_ py-2 px-1 cursor mt-2">
 
-                    <div (click)="open_btn_option = true; btnOption()" class="uk-flex uk-flex-center uk-flex-middle body_ full_h">
+                    <div (click)="open_btn_option = true; btnOption()"
+                        class="uk-flex uk-flex-center uk-flex-middle body_ full_h">
                         <span class="whiteC_" uk-icon="icon: plus"></span>
                         <p class="m-0 whiteC_ pl-1">Add New</p>
                     </div>
@@ -76,7 +79,8 @@
                         <div class="uk-grid-small full_h" uk-grid>
 
                             <div class="uk-width-auto">
-                                <button (click)="open_btn_option = false;btnOption()" class="full_w full_h whiteBG_ px-1 cursor">
+                                <button (click)="open_btn_option = false;btnOption()"
+                                    class="full_w full_h whiteBG_ px-1 cursor">
                                     <span class="blackC_" uk-icon="icon: close"></span>
                                 </button>
                             </div>
@@ -89,7 +93,7 @@
                                         <button (click)="add('choice')" class="full_w full_h whiteBG_ cursor">
 
                                             <div class="uk-flex uk-flex-center uk-flex-middle full_w full_h">
-                                                <img width="20%" src="../../../assets/img/test/choice.svg" alt="">
+                                                <img width="20%" src="assets/img/test/choice.svg" alt="">
                                                 <p class="ml-1">Choice</p>
                                             </div>
 
@@ -100,7 +104,7 @@
                                         <button (click)="add('text')" class="full_w full_h whiteBG_ cursor">
 
                                             <div class="uk-flex uk-flex-center uk-flex-middle full_w full_h">
-                                                <img width="20%" src="../../../assets/img/test/text.svg" alt="">
+                                                <img width="20%" src="assets/img/test/text.svg" alt="">
                                                 <p class="ml-1">Text</p>
                                             </div>
 
@@ -111,7 +115,7 @@
                                         <button (click)="add('rating')" class="full_w full_h whiteBG_ cursor">
 
                                             <div class="uk-flex uk-flex-center uk-flex-middle full_w full_h">
-                                                <img width="20%" src="../../../assets/img/test/rating.svg" alt="">
+                                                <img width="20%" src="assets/img/test/rating.svg" alt="">
                                                 <p class="ml-1">Rating</p>
                                             </div>
 
@@ -122,7 +126,7 @@
                                         <button (click)="add('date')" class="full_w full_h whiteBG_ cursor">
 
                                             <div class="uk-flex uk-flex-center uk-flex-middle full_w full_h">
-                                                <img width="20%" src="../../../assets/img/test/date.svg" alt="">
+                                                <img width="20%" src="assets/img/test/date.svg" alt="">
                                                 <p class="ml-1">Date</p>
                                             </div>
 
@@ -137,31 +141,16 @@
                                 <button class="full_w full_h whiteBG_ px-1 cursor">
                                     <span class="blackC_" uk-icon="icon: chevron-down"></span>
                                 </button>
-                                <div class="p-1" uk-dropdown="pos: bottom-right; mode: click">
+                                <div class="p-1 greenBG_" uk-dropdown="pos: bottom-right; mode: click">
                                     <ul class="uk-nav uk-dropdown-nav">
-                                        <li class="p-1">
+                                        <li class="p-1 whiteBG_ uk-flex uk-flex-middle" (click)="add('nps')">
                                             <a>
-                                                <span class="mr-1" uk-icon="check"></span>
+                                                <img style="width: 25px;" class="mr-1" src="assets/img/test/nps.svg"
+                                                    alt="">
                                                 Net Promoter Score
                                             </a>
                                         </li>
-                                        <li class="p-1">
-                                            <a>
-                                                <span class="mr-1" uk-icon="check"></span>
-                                                Subtitle
-                                            </a>
-                                        </li>
-                                        <li class="p-1">
-                                            <a>
-                                                <span class="mr-1" uk-icon="check"></span>
-                                                Subtitle
-                                            </a>
-                                        </li><li class="p-1">
-                                            <a>
-                                                <span class="mr-1" uk-icon="check"></span>
-                                                Subtitle
-                                            </a>
-                                        </li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -180,7 +169,5 @@
         </div>
 
     </div>
-
-
 
 </section>

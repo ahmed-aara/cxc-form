@@ -1,0 +1,66 @@
+<section class="sec_preview">
+
+    <div class="nav_ greenBG_">
+
+        <div class="uk-container">
+            <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+
+                <div class="uk-navbar-left">
+
+                    <ul class="uk-navbar-nav">
+                        <li class="uk-active btn">
+                            <a routerLink="/preview" class=" p-2 cursor">
+                                <div class="uk-flex uk-flex-center uk-flex-middle">
+                                    <span class="whiteC_" uk-icon="arrow-left"></span>
+                                    <p class="ml-1 whiteC_">Back</p>
+                                </div>
+                            </a>
+
+                        </li>
+                    </ul>
+
+                </div>
+
+            </nav>
+        </div>
+
+    </div>
+
+    <div class="body full_w">
+        <div class="uk-container whiteBG_ px-0 full_w greenBG_">
+
+            <div class="py-3 px-3 ">
+
+                <h2 class="whiteC_ mb-1">Form Name</h2>
+                <p class="whiteC_ f_Light">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto ex nobis
+                    exercitationem expedita
+                    dignissimos eaque id in quod quasi, sint consectetur dolores magni et ipsam reiciendis ipsum
+                    facilis, quae eos, obcaecati alias accusantium!..</p>
+
+            </div>
+
+            <div class="whiteBG_ px-3 py-3">
+
+                <div class="uk-grid-small uk-child-width-1-1@l" uk-grid>
+
+                    <div *ngFor="let item of cardArr;let i = index">
+
+                        <preview-text *ngIf="item.type === 'text'" [item]="item" [arrange]="i"></preview-text>
+                        <preview-choice *ngIf="item.type === 'choice'" [item]="item" [arrange]="i"></preview-choice>
+                        <preview-rating *ngIf="item.type === 'rating'" [item]="item" [arrange]="i"></preview-rating>
+                        <preview-date *ngIf="item.type === 'date'" [item]="item" [arrange]="i"></preview-date>
+                        <preview-nps *ngIf="item.type === 'nps'" [item]="item" (clickEvent)="receivedAction($event)"
+                            [arrange]="i"></preview-nps>
+
+                    </div>
+
+                </div>
+
+                <button class="btn greenBG_ whiteC_ py-2 px-3 cursor">Submit</button>
+
+            </div>
+
+        </div>
+    </div>
+
+</section>

@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
     "@ng-select/ng-select": "^10.0.0",
+    "ngx-sortable": "^2.1.0",
     "ngx-ui-switch": "^14.0.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

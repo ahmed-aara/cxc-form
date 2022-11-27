@@ -1,0 +1,23 @@
+<div>
+    <h4 class="mb-2">{{item.data.question_text}}. <span class="redC_" *ngIf="item.data.required">*</span></h4>
+    <h5 *ngIf="item.data.subtitle">{{item.data.subtitle_text}}</h5>
+
+
+    <div *ngIf="!item.data.drop_down && !item.data.multiple_answers" class="uk-grid-small uk-child-width-1-1@l uk-grid mt-1" uk-grid>
+        <label *ngFor="let option of item.data.options"><input class="uk-radio mr-1" type="radio" name="radio_{{item.id}}">
+            {{option.name}}</label>
+
+    </div>
+
+    <div *ngIf="item.data.multiple_answers" class="uk-grid-small uk-child-width-1-1@l uk-grid mt-1" uk-grid>
+        <label *ngFor="let option of item.data.options"><input class="uk-checkbox mr-1" type="checkbox">
+            {{option.name}}</label>
+    </div>
+
+    <ng-select *ngIf="item.data.drop_down" [items]="item.data.options" bindLabel="name" bindValue="name" class="mt-1 xxxx"
+        [placeholder]="'select Your Answer'">
+    </ng-select>
+
+    <div class="line_"></div>
+
+</div>

@@ -1,10 +1,11 @@
 <div class="card_">
 
     <div class="uk-flex uk-flex-center pt-3">
-        <span class="uk-sortable-handle uk-margin-small-right uk-text-center" uk-icon="icon: table"></span>
+        <span (mouseover)="mouseOver()" class="uk-sortable-handle uk-margin-small-right uk-text-center"
+            uk-icon="icon: table"></span>
     </div>
 
-    <div class="head_ px-4 uk-flex uk-flex-right uk-flex-middle">
+    <div *ngIf="!close" class="head_ px-4 uk-flex uk-flex-right uk-flex-middle">
 
         <div>
             <img (click)="delete(item.id)" src="assets/img/test/trash.svg" alt="">
@@ -15,42 +16,52 @@
 
     <div class="px-4 py-3">
 
-        <h3 class="f_Light mb-2">Choice <span *ngIf="item.data.required" class="redC_">*</span></h3>
+        <h5 class="f_Bold mb-2">Choice <span *ngIf="item.data.required" class="redC_">*</span></h5>
 
         <div class="uk-grid-small uk-child-width-1-1@l mb-3" uk-grid>
 
             <div>
-                <input class="uk-input py-2" type="text" (input)="changeValue(item.data,item.id)"
-                    [(ngModel)]="item.data.question_text">
-                <input *ngIf="item.data.subtitle" class="uk-input py-2 mt-1" (input)="changeValue(item.data,item.id)"
-                    [(ngModel)]="item.data.subtitle_text" type="text" placeholder="Enter Subtitle">
+                <div class="uk-flex uk-flex-middle">
+                    <p class="mr-1">{{arrange + 1}}-</p>
+                    <input class="uk-input py-2" type="text" (input)="changeValue(item.data,item.id)"
+                        [(ngModel)]="item.data.question_text">
+                </div>
 
-                <div class="uk-width-2-3">
+                <div *ngIf="!close">
+                    <input *ngIf="item.data.subtitle" class="uk-input py-2 mt-1"
+                        (input)="changeValue(item.data,item.id)" [(ngModel)]="item.data.subtitle_text" type="text"
+                        placeholder="Enter Subtitle">
+                </div>
+
+                <div *ngIf="!close" class="uk-width-2-3">
                     <ng-select *ngIf="item.data.drop_down" [items]="[]" class="mt-1" [isOpen]="false"
                         [hideSelected]="true" [placeholder]="'select Your Answer'">
                     </ng-select>
                 </div>
             </div>
-            <!--  -->
 
-            <div *ngIf="item.data.options.length !== 0" class="uk-grid-small uk-child-width-1-1@l ml-2" uk-grid>
+            <div *ngIf="!close" class="uk-grid-small uk-child-width-1-1@l ml-2" uk-grid>
 
-                <div *ngFor="let option of item.data.options; let i = index">
+                <div *ngIf="item.data.options.length !== 0">
 
-                    <div class="uk-grid-small uk-flex uk-flex-middle" uk-grid>
-                        <div *ngIf="!item.data.drop_down" class="uk-width-auto">
-                            <input *ngIf="!item.data.multiple_answers" disabled class="uk-radio" type="radio"
-                                name="radio2">
-                            <input *ngIf="item.data.multiple_answers" disabled class="uk-checkbox" type="checkbox">
-                        </div>
+                    <div *ngFor="let option of item.data.options; let i = index">
 
-                        <div class="uk-width-1-2">
-                            <input class="uk-input py-2" type="text" placeholder="Enter Your Option" [(ngModel)]="option.name"
-                                >
-                        </div>
+                        <div class="uk-grid-small uk-flex uk-flex-middle" uk-grid>
+                            <div *ngIf="!item.data.drop_down" class="uk-width-auto">
+                                <input *ngIf="!item.data.multiple_answers" disabled class="uk-radio" type="radio"
+                                    name="radio2">
+                                <input *ngIf="item.data.multiple_answers" disabled class="uk-checkbox" type="checkbox">
+                            </div>
 
-                        <div>
-                            <span (click)="deleteArr(i)" class="redC_" uk-icon="trash"></span>
+                            <div class="uk-width-1-2">
+                                <input class="uk-input py-2" type="text" placeholder="Enter Your Option"
+                                    (input)="changeValue(item.data,item.id)" [(ngModel)]="option.name">
+                            </div>
+
+                            <div>
+                                <span (click)="deleteArr(i,item.id)" class="redC_" uk-icon="trash"></span>
+                            </div>
+
                         </div>
 
                     </div>
@@ -82,10 +93,10 @@
 
         </div>
 
-        <div class="uk-flex">
+        <div *ngIf="!close" class="uk-flex">
 
-            <button (click)="addOption(item.id);changeValue(item.data,item.id)"
-                class="p-1 greenBG_ whiteC_ uk-flex uk-flex-middle cursor"><span uk-icon="plus"></span>
+            <button (click)="addOption(item.id);" class="p-1 greenBG_ whiteC_ uk-flex uk-flex-middle cursor"><span
+                    uk-icon="plus"></span>
                 &nbsp;
                 Add Option</button>
 
@@ -100,7 +111,7 @@
 
     </div>
 
-    <div class="footer_ px-4 uk-flex uk-flex-right uk-flex-middle">
+    <div *ngIf="!close" class="footer_ px-4 uk-flex uk-flex-right uk-flex-middle">
 
         <div class="uk-flex">
 

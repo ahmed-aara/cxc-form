@@ -14,6 +14,8 @@ export class CardRatingComponent implements OnInit {
 
   @Output() clickEvent = new EventEmitter();
   @Input() item: any | undefined;
+  @Input() arrange: any | undefined;
+  @Input() close: any | undefined;
 
   //Array
   levelArr: any = [2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -46,12 +48,16 @@ export class CardRatingComponent implements OnInit {
     this.clickEvent.emit({ type: 'delete', value: id });
   }
 
-  copy(data: any) {
-    this.clickEvent.emit({ type: 'copy', value: data });
+  copy(data: any, id: any) {
+    this.clickEvent.emit({ type: 'copy', value: data, template_id: id });
   }
 
   changeValue(data: any, id: any) {
     this.clickEvent.emit({ type: 'change-data', value: data, template_id: id });
+  }
+
+  mouseOver() {
+    this.clickEvent.emit({ type: 'mouse-over' });
   }
 
 }

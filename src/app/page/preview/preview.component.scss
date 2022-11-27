@@ -1,33 +1,33 @@
-.sec_form {
+.sec_preview {
     position: relative;
     width: 100%;
     height: 100vh;
     background-color: #e8f2f4;
 }
 
-.sec_form .uk-container {
+.sec_preview .uk-container {
     max-width: 943px !important;
 }
 
-.sec_form .body {
+.sec_preview .body {
     height: 85vh;
     position: absolute;
     bottom: 0;
     overflow: auto;
 }
 
-.sec_form .btn_add {
+.sec_preview .btn_add {
     width: 15%;
     height: 40px;
     border: none;
     transition: 0.5s;
 }
 
-.sec_form .btn_add p {
+.sec_preview .btn_add p {
     font-size: 17px;
 }
 
-.sec_form .nav_ {
+.sec_preview .nav_ {
     border-bottom: 1px solid #494949;
 }
 
@@ -39,8 +39,7 @@
     background-color: #fff;
 }
 
-.sec_form nav ul .btn:hover {
+.sec_preview nav ul .btn:hover {
     min-height: unset !important;
     background-color: #208d91;
 }
-
