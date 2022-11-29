@@ -1,0 +1,6 @@
+{
+    "/api": {
+        "target": "https://cxformstst.cxcreator.com:44301/AbpUserConfiguration/GetAll?d=1669580929774",
+        "secure": false
+    }
+}

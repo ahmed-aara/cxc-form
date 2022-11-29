@@ -1,12 +1,14 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataPassService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
   child1Subject = new Subject<any>();
   child2Subject = new Subject<any>();
 
@@ -16,4 +18,10 @@ export class DataPassService {
   child1DataChanges(value: any) {
     this.child1Subject.next(value);
   }
+
+  test():Observable<any> {
+    return this.http.get(environment.api)
+  }
+
+
 }

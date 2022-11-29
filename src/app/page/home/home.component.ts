@@ -1,5 +1,7 @@
 import { Component, OnInit, Renderer2, RendererStyleFlags2, ViewChild } from '@angular/core';
 import { NgSelectComponent } from '@ng-select/ng-select';
+import { DataPassService } from 'src/app/service/data-pass.service';
+import { environment } from 'src/environments/environment.prod';
 import { choiceData, dateData, textData, ratingData, npsData } from '../../module/data';
 declare const makeid: any, UIkit: any
 
@@ -15,7 +17,6 @@ declare const makeid: any, UIkit: any
   ]
 })
 export class HomeComponent implements OnInit {
-
 
   //Array
   cardArr: any = [
@@ -66,17 +67,23 @@ export class HomeComponent implements OnInit {
 
   //Variable
   open_btn_option: any = true
-  
+
   close: any = false;
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2, private ads: DataPassService) { }
 
   @ViewChild('sec_form', { static: false }) sec_form: any;
 
   ngOnInit(): void {
+
+    this.ads.test().subscribe(
+      response => {
+        console.log(response)
+      }
+    )
+
     let x: any = localStorage.getItem('card')
     this.cardArr = JSON.parse(x)
-    // console.log(JSON.parse(x))
 
     UIkit.util.on('.sortable_', 'moved', (item: any, sortable: any) => {
 
@@ -93,11 +100,9 @@ export class HomeComponent implements OnInit {
 
       this.cardArr.splice(new_order.indexOf(item.detail[1].id), 0, element);
 
-      localStorage.setItem('card', JSON.stringify(this.cardArr) )
+      localStorage.setItem('card', JSON.stringify(this.cardArr))
 
     });
-
-
 
     UIkit.util.on('.sortable_', 'stop', (item: any, sortable: any) => {
       this.close = false
