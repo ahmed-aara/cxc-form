@@ -54,7 +54,9 @@ import { NpsComponent } from './component/preview/nps/nps.component';
     UiSwitchModule,
     NgxSortableModule
   ],
-  providers: [],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
